@@ -3,7 +3,7 @@ from .make_rest_api_call import MakeRestApiCall
 
 def _check_health(config: dict) -> bool:
     try:
-        endpoint = ""
+        endpoint = "/orgs"
         method = "GET"
         MS = MakeRestApiCall(config=config)
         MS.make_request(endpoint=endpoint, method=method)
