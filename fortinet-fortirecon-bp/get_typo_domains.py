@@ -1,5 +1,5 @@
 from .make_rest_api_call import MakeRestApiCall
-from .handle_date import handle_date
+from .utils_functions import *
 
 
 def get_typo_domains(config: dict, params: dict) -> dict:
@@ -7,8 +7,6 @@ def get_typo_domains(config: dict, params: dict) -> dict:
     endpoint = f"/bp/{org_id}/typo_domains"  # edit endpoint
     method = "GET"  # GET/POST/PUT/DELETE
     # write your code here, if needed.
-    if params.get("id"):
-        endpoint += "/" + params.pop("id")
     if params.get("start_date"):
         params["start_date"] = handle_date(params.get("start_date"))
     if params.get("end_date"):

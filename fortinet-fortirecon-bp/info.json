@@ -7,8 +7,8 @@
   "cs_approved": true,
   "cs_compatible": true,
   "category": "Attack Surface Management",
-  "icon_small_name": "",
-  "icon_large_name": "",
+  "icon_small_name": "small_icon.png",
+  "icon_large_name": "large_icon.png",
   "help_online": "",
   "configuration": {
     "fields": [
@@ -25,7 +25,7 @@
       {
         "name": "api_key",
         "title": "api_key",
-        "type": "text",
+        "type": "password",
         "editable": true,
         "visible": true,
         "required": true,
@@ -49,7 +49,7 @@
       "operation": "search_alerts",
       "title": "Search Alerts",
       "annotation": "search_alerts",
-      "description": "Get list of alerts for the given org id",
+      "description": "Get list of alerts for the given organaization ID",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -211,9 +211,9 @@
     },
     {
       "operation": "get_alert_details_by_id",
-      "title": "Get Alert Details By ID",
+      "title": "Get Alert Details By  Alert ID",
       "annotation": "get_alert_details_by_id",
-      "description": "Get alert details by id",
+      "description": "Get alert details by alert ID",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -245,7 +245,7 @@
       "operation": "get_phishing_campaigns",
       "title": "Get Phishing Campaigns",
       "annotation": "get_phishing_campaigns",
-      "description": "Get list of phishing campaigns for the given org id",
+      "description": "Get list of phishing campaigns for the given organaization ID",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -259,15 +259,6 @@
           "visible": true,
           "required": true,
           "description": "Organization ID"
-        },
-        {
-          "name": "id",
-          "title": "Phishing Camapign ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "description": "Phishing Camapign ID"
         },
         {
           "name": "page",
@@ -291,10 +282,42 @@
       "output_schema": {}
     },
     {
+      "operation": "get_phishing_campaigns_by_id",
+      "title": "Get Phishing Campaigns By ID",
+      "annotation": "get_phishing_campaigns_by_id",
+      "description": "Get Phishing Campaigns By Phishing Campaign ID",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "org_id",
+          "title": "Organaization ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Organaization ID"
+        },
+        {
+          "name": "id",
+          "title": "Phishing Camapign ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Phishing Camapign ID",
+          "description": "Phishing Camapign ID"
+        }
+      ],
+      "output_schema": {}
+    },
+    {
       "operation": "get_rogue_apps",
       "title": "Get Rogue Apps",
       "annotation": "get_rogue_apps",
-      "description": "Get list of phishing campaigns for the given org id.",
+      "description": "Get list of phishing campaigns for the given organaization ID.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -310,24 +333,15 @@
           "description": "Organization ID"
         },
         {
-          "name": "id",
-          "title": "Rogue App ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "description": "Rogue App ID"
-        },
-        {
           "name": "status",
           "title": "Status",
           "type": "text",
           "editable": true,
           "visible": true,
           "required": false,
+          "description": "Should be comma seperated string or single string. \nexample:Non-Functional,Offline\n\n",
           "placeholder": "example:Non-Functional,Offline",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample:Non-Functional,Offline\n\n"
+          "tooltip": "Should be comma seperated string or single string. "
         },
         {
           "name": "keyword",
@@ -336,6 +350,7 @@
           "editable": true,
           "visible": true,
           "required": false,
+          "tooltip": "Should be comma seperated string or single string. ",
           "description": "Keyword"
         },
         {
@@ -360,10 +375,41 @@
       "output_schema": {}
     },
     {
+      "operation": "get_rogue_app_by_id",
+      "title": "Get Rogue App By ID",
+      "annotation": "get_rogue_app_by_id",
+      "description": "Get Rogue Details App By Rougue app ID",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "org_id",
+          "title": "Organization ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Organization ID"
+        },
+        {
+          "name": "id",
+          "title": "Rogue App ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Rogue App ID"
+        }
+      ],
+      "output_schema": {}
+    },
+    {
       "operation": "get_takedown_requests",
       "title": "Get Takedown Requests",
       "annotation": "get_takedown_requests",
-      "description": "Get list of takedown requests for the given org id.",
+      "description": "Get list of takedown requests for the given organaization ID.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -452,7 +498,7 @@
       "operation": "get_typo_domains",
       "title": "Get Typo Domains",
       "annotation": "get_typo_domains",
-      "description": "Get list of typo domains for the given org id.",
+      "description": "Get list of typo domains for the given organaization ID.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -466,15 +512,6 @@
           "visible": true,
           "required": true,
           "description": "Organization ID"
-        },
-        {
-          "name": "id",
-          "title": "Typo Domain ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "description": "Typo Domain ID"
         },
         {
           "name": "status",
@@ -555,6 +592,37 @@
           "visible": true,
           "required": false,
           "description": "Size"
+        }
+      ],
+      "output_schema": {}
+    },
+    {
+      "operation": "get_typo_domain_by_id",
+      "title": "Get Typo Domain By ID",
+      "annotation": "get_typo_domain_by_id",
+      "description": "Get typo domain details by Typo Domain ID",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "org_id",
+          "title": "Organization ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Organization ID"
+        },
+        {
+          "name": "id",
+          "title": "Typo_Domain_ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Typo_Domain_ID"
         }
       ],
       "output_schema": {}

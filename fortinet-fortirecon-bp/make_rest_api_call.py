@@ -3,6 +3,7 @@ import time
 from connectors.core.connector import get_logger, ConnectorError
 from connectors.core.utils import update_connnector_config
 
+
 error_msg = {
     401: 'Authentication failed due to invalid credentials',
     429: 'Rate limit was exceeded',
@@ -27,12 +28,11 @@ class MakeRestApiCall:
         try:
             if url is None:
                 url = self.server_url + endpoint
-            headers = {"Content-Type": "application/json",
-                       "Authorization": self.authkey}
-            # headers["Authorization"] = self.authkey
+            headers = { "Content-Type": "application/json",
+                        "Authorization": self.authkey}
+           # headers["Authorizaion"] = self.authkey
             response = requests.request(method=method, url=url,
-                                        headers=headers, data=data, json=json_data, params=params,
-                                        verify=self.verify_ssl)
+                                        headers=headers, data=data, json=json_data, params=params, verify=self.verify_ssl)
 
             if response.ok:
                 if 'json' in str(response.headers):

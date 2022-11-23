@@ -1,6 +1,5 @@
 from .make_rest_api_call import MakeRestApiCall
-from datetime import datetime
-from .handle_date import handle_date
+from .utils_functions import handle_date
 
 
 def search_alerts(config: dict, params: dict) -> dict:
