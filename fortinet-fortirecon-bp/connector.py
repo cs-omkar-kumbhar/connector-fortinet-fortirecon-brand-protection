@@ -1,8 +1,11 @@
 from connectors.core.connector import Connector, get_logger, ConnectorError
 from .operations import operations
-from .check_health import _check_health
+from .operations import _check_health
+
 
 logger = get_logger("fortinet-fortirecon-bp")
+
+
 class CustomConnector(Connector):
     def execute(self, config, operation, params, **kwargs):
         try:
