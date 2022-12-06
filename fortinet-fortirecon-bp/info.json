@@ -23,13 +23,22 @@
         "description": "server_url"
       },
       {
+        "name": "org_id",
+        "title": "Organization ID",
+        "type": "text",
+        "editable": true,
+        "visible": true,
+        "required": true,
+        "description": "Organization ID"
+      },
+      {
         "name": "api_key",
         "title": "api_key",
         "type": "password",
         "editable": true,
         "visible": true,
         "required": true,
-        "value": "qLggI7a0CVjTHSHaYb6coQSVm5DL2ucQ",
+        "value": "",
         "description": "api_key"
       },
       {
@@ -38,7 +47,7 @@
         "type": "checkbox",
         "editable": true,
         "visible": true,
-        "required": false,
+        "required": true,
         "value": true,
         "description": "verify_ssl"
       }
@@ -55,15 +64,6 @@
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "org_id",
-          "title": "Organization ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "description": "Organization ID"
-        },
         {
           "name": "relevance_rating",
           "title": "Relevance Rating",
@@ -207,7 +207,40 @@
           "description": "Size"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "hits": [
+          {
+            "adversary": [
+              ""
+            ],
+            "customer_tag": "",
+            "geography": [
+              ""
+            ],
+            "industry_tags": [
+              ""
+            ],
+            "information_date": "",
+            "information_reliability": "",
+            "motivation": "",
+            "publish_date": "",
+            "relevance_rating": "",
+            "report_id": "",
+            "report_title": "",
+            "report_type": "",
+            "source_category": "",
+            "source_name": "",
+            "source_reliability": "",
+            "status": "",
+            "summary": "",
+            "threat": [],
+            "tlp": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
     },
     {
       "operation": "get_alert_details_by_id",
@@ -220,15 +253,6 @@
       "enabled": true,
       "parameters": [
         {
-          "name": "org_id",
-          "title": "Organization ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "description": "Organization ID"
-        },
-        {
           "name": "id",
           "title": "Alert ID",
           "type": "text",
@@ -239,7 +263,27 @@
           "description": "Alert ID"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "adversary": [],
+        "customer_tag": "",
+        "geography": [],
+        "industry_tags": [],
+        "information_date": "",
+        "information_reliability": "",
+        "motivation": "",
+        "publish_date": "",
+        "relevance_rating": "",
+        "report_id": "",
+        "report_title": "",
+        "report_type": "",
+        "source_category": "",
+        "source_name": "",
+        "source_reliability": "",
+        "status": "",
+        "summary": "",
+        "threat": [],
+        "tlp": ""
+      }
     },
     {
       "operation": "get_phishing_campaigns",
@@ -251,15 +295,6 @@
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "org_id",
-          "title": "Organization ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "description": "Organization ID"
-        },
         {
           "name": "page",
           "title": "Page",
@@ -279,7 +314,26 @@
           "description": "Size"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "hits": [
+          {
+            "acknowledged_by": "",
+            "acknowledged_on": "",
+            "campaign_number": "",
+            "domain": "",
+            "id": "",
+            "is_acknowledged": "",
+            "is_malicious": "",
+            "org_id": "",
+            "ticket_id": "",
+            "url": "",
+            "visitor_ip": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
     },
     {
       "operation": "get_phishing_campaigns_by_id",
@@ -292,15 +346,6 @@
       "enabled": true,
       "parameters": [
         {
-          "name": "org_id",
-          "title": "Organaization ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "description": "Organaization ID"
-        },
-        {
           "name": "id",
           "title": "Phishing Camapign ID",
           "type": "text",
@@ -311,7 +356,19 @@
           "description": "Phishing Camapign ID"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "acknowledged_by": "",
+        "acknowledged_on": "",
+        "campaign_number": "",
+        "domain": "",
+        "id": "",
+        "is_acknowledged": "",
+        "is_malicious": "",
+        "org_id": "",
+        "ticket_id": "",
+        "url": "",
+        "visitor_ip": ""
+      }
     },
     {
       "operation": "get_rogue_apps",
@@ -323,15 +380,6 @@
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "org_id",
-          "title": "Organization ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "description": "Organization ID"
-        },
         {
           "name": "status",
           "title": "Status",
@@ -372,7 +420,26 @@
           "description": "Size"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "hits": [
+          {
+            "developer_name": "",
+            "download_count": "",
+            "first_seen": "",
+            "id": "",
+            "index_ts": "",
+            "keyword": "",
+            "name": "",
+            "size": "",
+            "source_name": "",
+            "status": "",
+            "ticket_id": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
     },
     {
       "operation": "get_rogue_app_by_id",
@@ -385,15 +452,6 @@
       "enabled": true,
       "parameters": [
         {
-          "name": "org_id",
-          "title": "Organization ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "description": "Organization ID"
-        },
-        {
           "name": "id",
           "title": "Rogue App ID",
           "type": "text",
@@ -403,7 +461,19 @@
           "description": "Rogue App ID"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "developer_name": "",
+        "download_count": "",
+        "first_seen": "",
+        "id": "",
+        "index_ts": "",
+        "keyword": "",
+        "name": "",
+        "size": "",
+        "source_name": "",
+        "status": "",
+        "ticket_id": ""
+      }
     },
     {
       "operation": "get_takedown_requests",
@@ -415,15 +485,6 @@
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "org_id",
-          "title": "Organization ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "description": "Organization ID"
-        },
         {
           "name": "status",
           "title": "Status",
@@ -492,7 +553,32 @@
           "description": "Size"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "hits": [
+          {
+            "category": "",
+            "comment": "",
+            "comment_at": "",
+            "comment_by": "",
+            "created_at": "",
+            "entity": "",
+            "is_client": "",
+            "org_name": "",
+            "progress": "",
+            "requested_at": "",
+            "requested_by_user": "",
+            "requested_by_volon": "",
+            "sla": "",
+            "status": "",
+            "takedown_request_id": "",
+            "ticket_id": "",
+            "ttr": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
     },
     {
       "operation": "get_typo_domains",
@@ -504,15 +590,6 @@
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "org_id",
-          "title": "Organization ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "description": "Organization ID"
-        },
         {
           "name": "status",
           "title": "Status",
@@ -594,7 +671,31 @@
           "description": "Size"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "hits": [
+          {
+            "dns_a": "",
+            "dns_screenshot": "",
+            "fuzzer": "",
+            "id": "",
+            "is_checked": "",
+            "is_moniter": "",
+            "keyword": "",
+            "original_domain": "",
+            "score": "",
+            "similar_domain": "",
+            "status": "",
+            "suspicious_category": "",
+            "suspicious_kayword": "",
+            "suspicious_status": "",
+            "ticket_id": "",
+            "whoiser_created_date": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
     },
     {
       "operation": "get_typo_domain_by_id",
@@ -607,15 +708,6 @@
       "enabled": true,
       "parameters": [
         {
-          "name": "org_id",
-          "title": "Organization ID",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": true,
-          "description": "Organization ID"
-        },
-        {
           "name": "id",
           "title": "Typo_Domain_ID",
           "type": "text",
@@ -625,7 +717,24 @@
           "description": "Typo_Domain_ID"
         }
       ],
-      "output_schema": {}
+      "output_schema": {
+        "dns_a": "",
+        "dns_screenshot": "",
+        "fuzzer": "",
+        "id": "",
+        "is_checked": "",
+        "is_moniter": "",
+        "keyword": "",
+        "original_domain": "",
+        "score": "",
+        "similar_domain": "",
+        "status": "",
+        "suspicious_category": "",
+        "suspicious_kayword": "",
+        "suspicious_status": "",
+        "ticket_id": "",
+        "whoiser_created_date": ""
+      }
     }
   ]
 }
