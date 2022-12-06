@@ -44,17 +44,6 @@ class MakeRestApiCall:
             logger.error('{0}'.format(e))
             raise ConnectorError('{0}'.format(e))
 
-    def organization_mapping(self, params):
-        endpoint = "/orgs"
-        response = self.make_request(endpoint=endpoint, method="GET")
-        org_mapping = response["hits"]
-        for org in org_mapping:
-            if org.get("org_name") == params.get("organization_id"):
-                org_id = org.get("org_id")
-
-        del params["organization_id"]
-        return org_id, params
-
 
 def _check_health(config: dict) -> bool:
     try:
@@ -158,8 +147,8 @@ def get_typo_domains(config: dict, params: dict) -> dict:
 
 def handle_date(str_date):
     return datetime.strptime(str_date, "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d")
-    # return datetime.strptime(str_date, "%Y-%m-%dT%H:%M:%S.%fZ").date()
-
+  
+    
 operations = {
     "search_alerts": search_alerts,
     "get_alert_details_by_id": get_alert_details_by_id,
