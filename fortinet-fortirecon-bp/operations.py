@@ -147,8 +147,8 @@ def get_typo_domains(config: dict, params: dict) -> dict:
 
 def handle_date(str_date):
     return datetime.strptime(str_date, "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d")
-  
-    
+
+
 operations = {
     "search_alerts": search_alerts,
     "get_alert_details_by_id": get_alert_details_by_id,

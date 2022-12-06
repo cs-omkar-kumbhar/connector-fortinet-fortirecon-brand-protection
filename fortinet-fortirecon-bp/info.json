@@ -20,16 +20,7 @@
         "visible": true,
         "required": true,
         "value": "https://api.fortirecon.forticloud.com",
-        "description": "server_url"
-      },
-      {
-        "name": "org_id",
-        "title": "Organization ID",
-        "type": "text",
-        "editable": true,
-        "visible": true,
-        "required": true,
-        "description": "Organization ID"
+        "description": "Server name or IP address to which you will connect and perform the automated operations"
       },
       {
         "name": "api_key",
@@ -39,7 +30,16 @@
         "visible": true,
         "required": true,
         "value": "",
-        "description": "api_key"
+        "description": "API key to access the endpoint to which you will connect and perform the automated operations"
+      },
+      {
+        "name": "org_id",
+        "title": "Organization ID",
+        "type": "text",
+        "editable": true,
+        "visible": true,
+        "required": true,
+        "description": "Specify the organization Id for which you will perform the search"
       },
       {
         "name": "verify_ssl",
@@ -49,7 +49,7 @@
         "visible": true,
         "required": true,
         "value": true,
-        "description": "verify_ssl"
+        "description": "Specifies whether the SSL certificate for the server is to be verified or not.\nBy default, this option is set as True."
       }
     ]
   },
@@ -58,7 +58,7 @@
       "operation": "search_alerts",
       "title": "Search Alerts",
       "annotation": "search_alerts",
-      "description": "Get list of alerts for the given organaization ID",
+      "description": "Get list of alerts for the given organization ID",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -72,8 +72,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example:Medium,High,Low",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample:Medium,High,Low"
+          "tooltip": "Should be comma separated string or single string. ",
+          "description": "Should be comma separated string or single string. \nexample:Medium,High,Low"
         },
         {
           "name": "tags",
@@ -83,8 +83,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example:Data Breach,Cyber Crime",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample:Data Breach,Cyber Crime"
+          "tooltip": "Should be comma separated string or single string. ",
+          "description": "Should be comma separated string or single string. \nexample:Data Breach,Cyber Crime"
         },
         {
           "name": "adversary",
@@ -94,8 +94,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example:Databases,APT 34",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample:Databases,APT 34"
+          "tooltip": "Should be comma separated string or single string. ",
+          "description": "Should be comma separated string or single string. \nexample:Databases,APT 34"
         },
         {
           "name": "source_category",
@@ -105,8 +105,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example: OSINT,Darknet",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample: OSINT,Darknet"
+          "tooltip": "Should be comma separated string or single string. ",
+          "description": "Should be comma separated string or single string. \nexample: OSINT,Darknet"
         },
         {
           "name": "report_type",
@@ -116,8 +116,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example: Flash Report,Flash Alert",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample: Flash Report,Flash Alert"
+          "tooltip": "Should be comma separated string or single string. ",
+          "description": "Should be comma separated string or single string. \nexample: Flash Report,Flash Alert"
         },
         {
           "name": "industry",
@@ -127,8 +127,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example: All Sectors,Technology",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample: All Sectors,Technology"
+          "tooltip": "Should be comma separated string or single string. ",
+          "description": "Should be comma separated string or single string. \nexample: All Sectors,Technology"
         },
         {
           "name": "geography",
@@ -138,8 +138,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example: Western Europe,South East Asia",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample: Western Europe,South East Asia"
+          "tooltip": "Should be comma separated string or single string. ",
+          "description": "Should be comma separated string or single string. \nexample: Western Europe,South East Asia"
         },
         {
           "name": "keyword",
@@ -195,7 +195,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page"
+          "description": "Page Number"
         },
         {
           "name": "size",
@@ -204,7 +204,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Size"
+          "description": "Number of records on each Page"
         }
       ],
       "output_schema": {
@@ -289,7 +289,7 @@
       "operation": "get_phishing_campaigns",
       "title": "Get Phishing Campaigns",
       "annotation": "get_phishing_campaigns",
-      "description": "Get list of phishing campaigns for the given organaization ID",
+      "description": "Get list of phishing campaigns for the given organization ID",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -302,7 +302,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page"
+          "description": "Page Number"
         },
         {
           "name": "size",
@@ -311,7 +311,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Size"
+          "description": "Number of records on each Page"
         }
       ],
       "output_schema": {
@@ -347,13 +347,13 @@
       "parameters": [
         {
           "name": "id",
-          "title": "Phishing Camapign ID",
+          "title": "Phishing Campaign ID",
           "type": "text",
           "editable": true,
           "visible": true,
           "required": true,
-          "tooltip": "Phishing Camapign ID",
-          "description": "Phishing Camapign ID"
+          "tooltip": "Phishing Campaign ID",
+          "description": "Phishing Campaign ID"
         }
       ],
       "output_schema": {
@@ -374,7 +374,7 @@
       "operation": "get_rogue_apps",
       "title": "Get Rogue Apps",
       "annotation": "get_rogue_apps",
-      "description": "Get list of phishing campaigns for the given organaization ID.",
+      "description": "Get list of phishing campaigns for the given organization ID.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -387,9 +387,9 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Should be comma seperated string or single string. \nexample:Non-Functional,Offline\n\n",
+          "description": "Should be comma separated string or single string. \nexample:Non-Functional,Offline\n\n",
           "placeholder": "example:Non-Functional,Offline",
-          "tooltip": "Should be comma seperated string or single string. "
+          "tooltip": "Should be comma separated string or single string. "
         },
         {
           "name": "keyword",
@@ -398,7 +398,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Should be comma seperated string or single string. ",
+          "tooltip": "Should be comma separated string or single string. ",
           "description": "Keyword"
         },
         {
@@ -408,7 +408,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page"
+          "description": "Page Number"
         },
         {
           "name": "size",
@@ -417,7 +417,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Size"
+          "description": "Number of records on each Page"
         }
       ],
       "output_schema": {
@@ -445,7 +445,7 @@
       "operation": "get_rogue_app_by_id",
       "title": "Get Rogue App By ID",
       "annotation": "get_rogue_app_by_id",
-      "description": "Get Rogue Details App By Rougue app ID",
+      "description": "Get Rogue Details App By Rogue app ID",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -479,7 +479,7 @@
       "operation": "get_takedown_requests",
       "title": "Get Takedown Requests",
       "annotation": "get_takedown_requests",
-      "description": "Get list of takedown requests for the given organaization ID.",
+      "description": "Get list of takedown requests for the given organization ID.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -493,8 +493,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example:Non-Functional,Offline",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample:Non-Functional,Offline\n\n"
+          "tooltip": "Should be comma separated string or single string. ",
+          "description": "Should be comma separated string or single string. \nexample:Non-Functional,Offline\n\n"
         },
         {
           "name": "category",
@@ -541,7 +541,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page"
+          "description": "Page Number"
         },
         {
           "name": "size",
@@ -550,7 +550,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Size"
+          "description": "Number of records on each Page"
         }
       ],
       "output_schema": {
@@ -584,7 +584,7 @@
       "operation": "get_typo_domains",
       "title": "Get Typo Domains",
       "annotation": "get_typo_domains",
-      "description": "Get list of typo domains for the given organaization ID.",
+      "description": "Get list of typo domains for the given organization ID.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -598,8 +598,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example:Non-Functional,Offline",
-          "tooltip": "Should be comma seperated string or single string. ",
-          "description": "Should be comma seperated string or single string. \nexample:Non-Functional,Offline\n\n"
+          "tooltip": "Should be comma separated string or single string. ",
+          "description": "Should be comma separated string or single string. \nexample:Non-Functional,Offline"
         },
         {
           "name": "original_domain",
@@ -608,9 +608,9 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Should be comma seperated string or single string. \nexample: test.com,test1.com\n\n",
+          "description": "Should be comma separated string or single string. \nexample: test.com,test1.com",
           "placeholder": "example: test.com,test1.com",
-          "tooltip": "Should be comma seperated string or single string. "
+          "tooltip": "Should be comma separated string or single string. "
         },
         {
           "name": "keyword",
@@ -628,9 +628,9 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "ex.1 \u003d\u003e 50to80, ex.2 \u003d\u003e 0to80",
-          "tooltip": "Should be string ex.1 \u003d\u003e 50to80, ex.2 \u003d\u003e 0to80",
-          "description": "Should be string ex.1 \u003d\u003e 50to80, ex.2 \u003d\u003e 0to80"
+          "placeholder": "ex.1 50to80, ex.2 0to80",
+          "tooltip": "Should be string ex.1 50to80, ex.2 0to80",
+          "description": "Should be string ex.1 50to80, ex.2 0to80"
         },
         {
           "name": "start_date",
@@ -659,7 +659,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page"
+          "tooltip": "Should be Date or Default is Current Date (YYYY-MM-DD)",
+          "description": "Page Number"
         },
         {
           "name": "size",
@@ -668,7 +669,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Size"
+          "description": "Number of records on each page"
         }
       ],
       "output_schema": {
