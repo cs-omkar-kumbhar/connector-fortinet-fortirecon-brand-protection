@@ -659,7 +659,6 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "",
           "description": "Page number from which you want to retrieve records."
         },
         {
