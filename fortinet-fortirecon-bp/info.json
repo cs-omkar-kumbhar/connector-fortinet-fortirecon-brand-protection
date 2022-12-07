@@ -204,7 +204,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of events that this operation should return for the current page"
+          "description": "Maximum number of records that this operation should return for the current page"
         }
       ],
       "output_schema": {
@@ -311,7 +311,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of events that this operation should return for the current page"
+          "description": "Maximum number of records that this operation should return for the current page"
         }
       ],
       "output_schema": {
@@ -417,7 +417,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of events that this operation should return for the current page"
+          "description": "Maximum number of records that this operation should return for the current page"
         }
       ],
       "output_schema": {
@@ -550,7 +550,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of events that this operation should return for the current page"
+          "description": "Maximum number of records that this operation should return for the current page"
         }
       ],
       "output_schema": {
@@ -659,7 +659,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Should be Date or Default is Current Date (YYYY-MM-DD)",
+          "tooltip": "",
           "description": "Page number from which you want to retrieve records."
         },
         {
@@ -669,7 +669,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of events that this operation should return for the current page"
+          "description": "Maximum number of records that this operation should return for the current page"
         }
       ],
       "output_schema": {
