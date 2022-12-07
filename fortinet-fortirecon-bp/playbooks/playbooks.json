@@ -1,0 +1,739 @@
+{
+  "type": "workflow_collections",
+  "data": [
+    {
+      "uuid": "be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+      "@type": "WorkflowCollection",
+      "name": "Sample - fortinet-fortirecon-bp - 1.0.0",
+      "description": "FortiRecon is a Digital Risk Protection Service (DRPS) product that provides an outside-the-network view to the risks posed to your enterprise.",
+      "visible": true,
+      "image": null,
+      "recordTags": [
+        "Fortinet",
+        "fortinet-fortirecon-bp"
+      ],
+      "workflows": [
+        {
+          "@type": "Workflow",
+          "uuid": "e681b831-ee51-499c-a448-edf7353a8657",
+          "collection": "/api/3/workflow_collections/be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+          "triggerLimit": null,
+          "description": "Get list of alerts for the given organization ID",
+          "name": "Search Alerts",
+          "tag": "#fortinet-fortirecon-bp",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortirecon-bp"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/2656e859-851f-4842-b948-fd2e409a71a1",
+          "steps": [
+            {
+              "uuid": "2656e859-851f-4842-b948-fd2e409a71a1",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "34ae4d49-220b-4d67-a0b5-238e913e2282",
+                "title": "fortinet-fortirecon-bp: Search Alerts",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "ad9ea275-1e7e-4434-9967-286d1d728189",
+              "@type": "WorkflowStep",
+              "name": "Search Alerts",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "fortinet-fortirecon-bp",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortirecon-bp",
+                "operation": "search_alerts",
+                "operationTitle": "Search Alerts",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "3773f56f-954a-438b-ad7e-9ea6e6149ae6",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Search Alerts",
+              "sourceStep": "/api/3/workflow_steps/2656e859-851f-4842-b948-fd2e409a71a1",
+              "targetStep": "/api/3/workflow_steps/ad9ea275-1e7e-4434-9967-286d1d728189"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "e339eac1-ee61-4150-b711-a146740a3191",
+          "collection": "/api/3/workflow_collections/be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+          "triggerLimit": null,
+          "description": "Get alert details by alert ID",
+          "name": "Get Alert Details By Alert ID",
+          "tag": "#fortinet-fortirecon-bp",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortirecon-bp"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c221a152-cde4-4fc8-b628-7eff7c431c2b",
+          "steps": [
+            {
+              "uuid": "c221a152-cde4-4fc8-b628-7eff7c431c2b",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "45d80f4b-75d2-4478-955b-9715d92f5eb3",
+                "title": "fortinet-fortirecon-bp: Get Alert Details By Alert ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "19c43cae-cb74-4e7a-89cd-915357a6ba44",
+              "@type": "WorkflowStep",
+              "name": "Get Alert Details By Alert ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "fortinet-fortirecon-bp",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortirecon-bp",
+                "operation": "get_alert_details_by_id",
+                "operationTitle": "Get Alert Details By Alert ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "82c29c42-505c-4e88-ac2d-28e475fbaa84",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Alert Details By Alert ID",
+              "sourceStep": "/api/3/workflow_steps/c221a152-cde4-4fc8-b628-7eff7c431c2b",
+              "targetStep": "/api/3/workflow_steps/19c43cae-cb74-4e7a-89cd-915357a6ba44"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "5017de19-106f-439a-9031-83ec38f3f95f",
+          "collection": "/api/3/workflow_collections/be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+          "triggerLimit": null,
+          "description": "Get list of phishing campaigns for the given organization ID",
+          "name": "Get Phishing Campaigns",
+          "tag": "#fortinet-fortirecon-bp",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortirecon-bp"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/b8bb9e43-447f-4d85-b55d-771948f7dfb8",
+          "steps": [
+            {
+              "uuid": "b8bb9e43-447f-4d85-b55d-771948f7dfb8",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "6d8e589e-b2c0-4e4d-ba64-5a25b6884dce",
+                "title": "fortinet-fortirecon-bp: Get Phishing Campaigns",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "28ed291a-bf9c-4c5e-92fc-5f1bf5dc0ccb",
+              "@type": "WorkflowStep",
+              "name": "Get Phishing Campaigns",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "fortinet-fortirecon-bp",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortirecon-bp",
+                "operation": "get_phishing_campaigns",
+                "operationTitle": "Get Phishing Campaigns",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "9c631fe3-a0dc-4111-ada1-7b1fe4325421",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Phishing Campaigns",
+              "sourceStep": "/api/3/workflow_steps/b8bb9e43-447f-4d85-b55d-771948f7dfb8",
+              "targetStep": "/api/3/workflow_steps/28ed291a-bf9c-4c5e-92fc-5f1bf5dc0ccb"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "07c6f04b-7243-4a49-a92c-043f5dc82b36",
+          "collection": "/api/3/workflow_collections/be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+          "triggerLimit": null,
+          "description": "Get Phishing Campaigns Details By Phishing Campaign ID",
+          "name": "Get Phishing Campaigns By ID",
+          "tag": "#fortinet-fortirecon-bp",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortirecon-bp"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/7d32eacf-baa4-4624-b6a9-90f8e4a3dcde",
+          "steps": [
+            {
+              "uuid": "7d32eacf-baa4-4624-b6a9-90f8e4a3dcde",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "25221fb4-44e6-4539-bf3c-6828e5f8e1ba",
+                "title": "fortinet-fortirecon-bp: Get Phishing Campaigns By ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "76fb161e-eea8-4908-999f-5e733a5178bd",
+              "@type": "WorkflowStep",
+              "name": "Get Phishing Campaigns By ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "fortinet-fortirecon-bp",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortirecon-bp",
+                "operation": "get_phishing_campaigns_by_id",
+                "operationTitle": "Get Phishing Campaigns By ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "235049f5-95b8-4ad3-a1de-644e1d9f0998",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Phishing Campaigns By ID",
+              "sourceStep": "/api/3/workflow_steps/7d32eacf-baa4-4624-b6a9-90f8e4a3dcde",
+              "targetStep": "/api/3/workflow_steps/76fb161e-eea8-4908-999f-5e733a5178bd"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "5bb7b1b1-1ae8-4854-b4da-2306a4cf5131",
+          "collection": "/api/3/workflow_collections/be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+          "triggerLimit": null,
+          "description": "Get list of phishing campaigns for the given organization ID.",
+          "name": "Get Rogue Apps",
+          "tag": "#fortinet-fortirecon-bp",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortirecon-bp"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/77642068-60d9-4ef8-a601-ffd6dffed58e",
+          "steps": [
+            {
+              "uuid": "77642068-60d9-4ef8-a601-ffd6dffed58e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "76830963-8e2b-448d-8e73-afc552f0742b",
+                "title": "fortinet-fortirecon-bp: Get Rogue Apps",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "420be570-aeac-4449-b8e4-a67d0734d419",
+              "@type": "WorkflowStep",
+              "name": "Get Rogue Apps",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "fortinet-fortirecon-bp",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortirecon-bp",
+                "operation": "get_rogue_apps",
+                "operationTitle": "Get Rogue Apps",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "578c6c9f-1841-4b27-b40a-d524fad2dc4c",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Rogue Apps",
+              "sourceStep": "/api/3/workflow_steps/77642068-60d9-4ef8-a601-ffd6dffed58e",
+              "targetStep": "/api/3/workflow_steps/420be570-aeac-4449-b8e4-a67d0734d419"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "0395bdf3-1341-4367-bc53-1b80fbe92556",
+          "collection": "/api/3/workflow_collections/be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+          "triggerLimit": null,
+          "description": "Get Rogue Details App By Rogue app ID",
+          "name": "Get Rogue App By ID",
+          "tag": "#fortinet-fortirecon-bp",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortirecon-bp"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/d8c37a2a-25ef-4f0c-a493-193b376f4318",
+          "steps": [
+            {
+              "uuid": "d8c37a2a-25ef-4f0c-a493-193b376f4318",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "4b7a0185-aba3-4f10-8893-0a9f099a2573",
+                "title": "fortinet-fortirecon-bp: Get Rogue App By ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "2809e390-599e-4d7b-a5a6-7e8532dd0096",
+              "@type": "WorkflowStep",
+              "name": "Get Rogue App By ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "fortinet-fortirecon-bp",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortirecon-bp",
+                "operation": "get_rogue_app_by_id",
+                "operationTitle": "Get Rogue App By ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "c0c98919-89e4-412b-83b1-d92b9a093219",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Rogue App By ID",
+              "sourceStep": "/api/3/workflow_steps/d8c37a2a-25ef-4f0c-a493-193b376f4318",
+              "targetStep": "/api/3/workflow_steps/2809e390-599e-4d7b-a5a6-7e8532dd0096"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "328a86c3-0f56-4a55-8474-4809bf3f0930",
+          "collection": "/api/3/workflow_collections/be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+          "triggerLimit": null,
+          "description": "Get list of takedown requests for the given organization ID.",
+          "name": "Get Takedown Requests",
+          "tag": "#fortinet-fortirecon-bp",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortirecon-bp"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/c61a8237-cfc6-4b86-9472-2cab9cddf60e",
+          "steps": [
+            {
+              "uuid": "c61a8237-cfc6-4b86-9472-2cab9cddf60e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "f3fd4988-03a3-4173-a18b-0653cac5f6a2",
+                "title": "fortinet-fortirecon-bp: Get Takedown Requests",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "cd22a597-aa8a-4436-aebb-d503eee882f8",
+              "@type": "WorkflowStep",
+              "name": "Get Takedown Requests",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "fortinet-fortirecon-bp",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortirecon-bp",
+                "operation": "get_takedown_requests",
+                "operationTitle": "Get Takedown Requests",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "36db8012-0609-4ffc-b786-3e0c7f031729",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Takedown Requests",
+              "sourceStep": "/api/3/workflow_steps/c61a8237-cfc6-4b86-9472-2cab9cddf60e",
+              "targetStep": "/api/3/workflow_steps/cd22a597-aa8a-4436-aebb-d503eee882f8"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "8ca5c388-cf39-4b74-bd0f-eedb8512533e",
+          "collection": "/api/3/workflow_collections/be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+          "triggerLimit": null,
+          "description": "Get list of typo domains for the given organization ID.",
+          "name": "Get Typo Domains",
+          "tag": "#fortinet-fortirecon-bp",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortirecon-bp"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/267fb339-fa98-4b00-91f6-708c7730e79e",
+          "steps": [
+            {
+              "uuid": "267fb339-fa98-4b00-91f6-708c7730e79e",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "d4889fe9-e09b-4984-aa79-feb112d780ac",
+                "title": "fortinet-fortirecon-bp: Get Typo Domains",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "a9adc5a3-3baf-4b23-8d2a-d13b0648f817",
+              "@type": "WorkflowStep",
+              "name": "Get Typo Domains",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "fortinet-fortirecon-bp",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortirecon-bp",
+                "operation": "get_typo_domains",
+                "operationTitle": "Get Typo Domains",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "da3e589f-3ce1-4887-9297-0958e0042f03",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Typo Domains",
+              "sourceStep": "/api/3/workflow_steps/267fb339-fa98-4b00-91f6-708c7730e79e",
+              "targetStep": "/api/3/workflow_steps/a9adc5a3-3baf-4b23-8d2a-d13b0648f817"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "e045d31a-595c-4e11-bc15-e6537abc1870",
+          "collection": "/api/3/workflow_collections/be9bf7a6-1600-4c55-8ebb-db09a66c2836",
+          "triggerLimit": null,
+          "description": "Get typo domain details by Typo Domain ID",
+          "name": "Get Typo Domain By ID",
+          "tag": "#fortinet-fortirecon-bp",
+          "recordTags": [
+            "Fortinet",
+            "fortinet-fortirecon-bp"
+          ],
+          "isActive": false,
+          "debug": false,
+          "singleRecordExecution": false,
+          "parameters": [],
+          "synchronous": false,
+          "triggerStep": "/api/3/workflow_steps/e1eb7d0f-28a9-4781-99fd-6006abd6a3be",
+          "steps": [
+            {
+              "uuid": "e1eb7d0f-28a9-4781-99fd-6006abd6a3be",
+              "@type": "WorkflowStep",
+              "name": "Start",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "route": "10892fcc-9793-449a-b493-7d10d7e507f1",
+                "title": "fortinet-fortirecon-bp: Get Typo Domain By ID",
+                "resources": [
+                  "alerts"
+                ],
+                "inputVariables": [],
+                "step_variables": {
+                  "input": {
+                    "records": "{{vars.input.records[0]}}"
+                  }
+                },
+                "singleRecordExecution": false,
+                "noRecordExecution": true,
+                "executeButtonText": "Execute"
+              },
+              "left": "20",
+              "top": "20",
+              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+            },
+            {
+              "uuid": "e552cb04-3f27-49f1-b924-6358cbff66cd",
+              "@type": "WorkflowStep",
+              "name": "Get Typo Domain By ID",
+              "description": null,
+              "status": null,
+              "arguments": {
+                "name": "fortinet-fortirecon-bp",
+                "config": "''",
+                "params": [],
+                "version": "1.0.0",
+                "connector": "fortinet-fortirecon-bp",
+                "operation": "get_typo_domain_by_id",
+                "operationTitle": "Get Typo Domain By ID",
+                "step_variables": {
+                  "output_data": "{{vars.result}}"
+                }
+              },
+              "left": "188",
+              "top": "120",
+              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
+            }
+          ],
+          "routes": [
+            {
+              "@type": "WorkflowRoute",
+              "uuid": "e613edb3-5cd8-45c6-a709-9c9380cdb08d",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Typo Domain By ID",
+              "sourceStep": "/api/3/workflow_steps/e1eb7d0f-28a9-4781-99fd-6006abd6a3be",
+              "targetStep": "/api/3/workflow_steps/e552cb04-3f27-49f1-b924-6358cbff66cd"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
