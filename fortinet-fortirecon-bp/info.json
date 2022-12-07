@@ -14,7 +14,7 @@
     "fields": [
       {
         "name": "server_url",
-        "title": "server_url",
+        "title": "Server URL",
         "type": "text",
         "editable": true,
         "visible": true,
@@ -24,7 +24,7 @@
       },
       {
         "name": "api_key",
-        "title": "api_key",
+        "title": "API Key",
         "type": "password",
         "editable": true,
         "visible": true,
@@ -43,7 +43,7 @@
       },
       {
         "name": "verify_ssl",
-        "title": "verify_ssl",
+        "title": "Verify SSL",
         "type": "checkbox",
         "editable": true,
         "visible": true,
@@ -195,7 +195,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page Number"
+          "description": "Page number from which you want to retrieve records."
         },
         {
           "name": "size",
@@ -204,7 +204,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Number of records on each Page"
+          "description": "Maximum number of events that this operation should return for the current page"
         }
       ],
       "output_schema": {
@@ -244,7 +244,7 @@
     },
     {
       "operation": "get_alert_details_by_id",
-      "title": "Get Alert Details By  Alert ID",
+      "title": "Get Alert Details By Alert ID",
       "annotation": "get_alert_details_by_id",
       "description": "Get alert details by alert ID",
       "category": "investigation",
@@ -302,7 +302,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page Number"
+          "description": "Page number from which you want to retrieve records."
         },
         {
           "name": "size",
@@ -311,7 +311,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Number of records on each Page"
+          "description": "Maximum number of events that this operation should return for the current page"
         }
       ],
       "output_schema": {
@@ -339,7 +339,7 @@
       "operation": "get_phishing_campaigns_by_id",
       "title": "Get Phishing Campaigns By ID",
       "annotation": "get_phishing_campaigns_by_id",
-      "description": "Get Phishing Campaigns By Phishing Campaign ID",
+      "description": "Get Phishing Campaigns Details By Phishing Campaign ID",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -408,7 +408,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page Number"
+          "description": "Page number from which you want to retrieve records."
         },
         {
           "name": "size",
@@ -417,7 +417,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Number of records on each Page"
+          "description": "Maximum number of events that this operation should return for the current page"
         }
       ],
       "output_schema": {
@@ -541,7 +541,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page Number"
+          "description": "Page number from which you want to retrieve records."
         },
         {
           "name": "size",
@@ -550,7 +550,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Number of records on each Page"
+          "description": "Maximum number of events that this operation should return for the current page"
         }
       ],
       "output_schema": {
@@ -660,7 +660,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Should be Date or Default is Current Date (YYYY-MM-DD)",
-          "description": "Page Number"
+          "description": "Page number from which you want to retrieve records."
         },
         {
           "name": "size",
@@ -669,7 +669,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Number of records on each page"
+          "description": "Maximum number of events that this operation should return for the current page"
         }
       ],
       "output_schema": {

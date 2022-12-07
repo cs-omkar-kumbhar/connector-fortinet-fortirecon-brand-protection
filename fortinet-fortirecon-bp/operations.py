@@ -1,3 +1,9 @@
+""" Copyright start
+  Copyright (C) 2008 - 2021 Fortinet Inc.
+  All rights reserved.
+  FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
+  Copyright end """
+
 from datetime import datetime
 import requests
 from connectors.core.connector import get_logger, ConnectorError
