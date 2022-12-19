@@ -9,7 +9,7 @@ from .operations import operations
 from .operations import _check_health
 
 
-logger = get_logger("fortinet-fortirecon-bp")
+logger = get_logger("fortinet-fortirecon-brand-protection")
 
 
 class CustomConnector(Connector):

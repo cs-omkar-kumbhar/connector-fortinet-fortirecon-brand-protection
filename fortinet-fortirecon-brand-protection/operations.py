@@ -8,7 +8,7 @@ from datetime import datetime
 import requests
 from connectors.core.connector import get_logger, ConnectorError
 
-logger = get_logger("fortinet-fortirecon-bp")
+logger = get_logger("fortinet-fortirecon-brand-protection")
 
 
 class MakeRestApiCall:
