@@ -1,6 +1,6 @@
 {
   "name": "fortinet-fortirecon-bp",
-  "label": "fortinet-fortirecon-bp",
+  "label": "Fortinet FortiRecon BP",
   "version": "1.0.0",
   "description": "FortiRecon is a Digital Risk Protection Service (DRPS) product that provides an outside-the-network view to the risks posed to your enterprise.",
   "publisher": "Fortinet",
