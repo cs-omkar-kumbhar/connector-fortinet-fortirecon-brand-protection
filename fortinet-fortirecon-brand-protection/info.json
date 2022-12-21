@@ -58,7 +58,7 @@
       "operation": "search_alerts",
       "title": "Search Alerts",
       "annotation": "search_alerts",
-      "description": "Get list of alerts for the given organization ID",
+      "description": "Get list of alerts(reports) published by FortiRecon for the given organisation.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -71,9 +71,9 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "example:Medium,High,Low",
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Should be comma separated string or single string. \nexample:Medium,High,Low"
+          "placeholder": "example: Medium,High,Low",
+          "tooltip": "Filter by specific relevance rating. Multiple relevance ratings should be comma separated, example:Medium,High,Low.",
+          "description": "Filter by specific relevance rating. Multiple relevance ratings should be comma separated, example:Medium,High,Low."
         },
         {
           "name": "tags",
@@ -82,9 +82,9 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "example:Data Breach,Cyber Crime",
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Should be comma separated string or single string. \nexample:Data Breach,Cyber Crime"
+          "placeholder": "example:phishing,malware,exploited",
+          "tooltip": "Filter by specific tag. Multiple tags should be comma separated, example:phishing,malware,exploited",
+          "description": "Filter by specific tag. Multiple tags should be comma separated, example:phishing,malware,exploited"
         },
         {
           "name": "adversary",
@@ -93,31 +93,38 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "example:Databases,APT 34",
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Should be comma separated string or single string. \nexample:Databases,APT 34"
+          "placeholder": "example: apt35,foo,bar",
+          "tooltip": "Filter by specific adversary(actor names, APT groups). Multiple adversary should be comma separated, example:apt35,foo,bar",
+          "description": "Filter by specific adversary(actor names, APT groups). Multiple adversary should be comma separated, example:apt35,foo,bar"
         },
         {
           "name": "source_category",
           "title": "Source Category",
-          "type": "text",
+          "type": "multiselect",
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "example: OSINT,Darknet",
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Should be comma separated string or single string. \nexample: OSINT,Darknet"
+          "tooltip": "Filter by specific source category. Acceptable values are: Darknet,OSINT,Technical Intelligence. Multiple source categories should be comma separated, example: Darknet,OSINT,Technical Intelligence",
+          "description": "Filter by specific source category. Acceptable values are: Darknet,OSINT,Technical Intelligence. Multiple source categories should be comma separated, example: Darknet,OSINT,Technical Intelligence",
+          "options": [
+           "Darknet",
+           "OSINT",
+           "Technical Intelligence"
+          ]
         },
         {
           "name": "report_type",
           "title": "Report Type",
-          "type": "text",
+          "type": "multiselect",
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "example: Flash Report,Flash Alert",
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Should be comma separated string or single string. \nexample: Flash Report,Flash Alert"
+          "tooltip": "Filter by specific report type. Acceptable values are: Flash Report, Flash Alert, Threat alert,Threat report. Multiple report types should be comma separated, example: Flash Report,Flash Alert,Threat alert,Threat report",
+          "description": "Filter by specific report type. Acceptable values are: Flash Report, Flash Alert, Threat alert,Threat report. Multiple report types should be comma separated, example: Flash Report,Flash Alert,Threat alert,Threat report",
+          "options": [
+           "Flash Report",
+            "Flash Alert"
+          ]
         },
         {
           "name": "industry",
@@ -126,9 +133,9 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "example: All Sectors,Technology",
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Should be comma separated string or single string. \nexample: All Sectors,Technology"
+          "placeholder": "example: manufacturing, government,hospitality",
+          "tooltip": "Filter by specific industry. Multiple industries should be comma separated, example: manufacturing, government,hospitality.",
+          "description": "Filter by specific industry. Multiple industries should be comma separated, example: manufacturing, government,hospitality."
         },
         {
           "name": "geography",
@@ -137,9 +144,9 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "example: Western Europe,South East Asia",
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Should be comma separated string or single string. \nexample: Western Europe,South East Asia"
+          "placeholder": "example: south america,western europe, east asia,africa.",
+          "tooltip": "Filter by geography. Multiple geographies should be comma separated, example: south america,western europe, east asia,africa.",
+          "description": "Filter by geography. Multiple geographies should be comma separated, example: south america,western europe, east asia,africa."
         },
         {
           "name": "keyword",
@@ -148,25 +155,44 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Keyword"
+          "tooltip": "Filter by specific keyword in these fields:Report ID, Report Title, Report Summary, Report Content, Source Category. Actors, Motivation, Threats, Industry Tags.",
+          "description": "Filter by specific keyword in these fields:Report ID, Report Title, Report Summary, Report Content, Source Category. Actors, Motivation, Threats, Industry Tags."
         },
         {
           "name": "source_reliability",
           "title": "Source Reliability",
-          "type": "text",
+          "type": "multiselect",
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Source Reliability"
+          "tooltip": "Filter by specific source reliability.",
+          "description": "Filter by specific source reliability.Acceptable values are:A-Reliable,B-Usually reliable,C-Fairly reliable,D-Not usually reliable,E-Unreliable,F-Cannot be judged.",
+          "options": [
+            "A-Reliable",
+            "B-Usually reliable",
+            "C-Fairly reliable",
+            "D-Not usually reliable",
+            "E-Unreliable",
+            "F-Cannot be judged"
+          ]
         },
         {
           "name": "information_reliability",
           "title": "Information Reliability",
-          "type": "text",
+          "type": "multiselect",
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Information Reliability"
+          "tooltip":"Filter by specific information reliability. Acceptable values are:1-Confirmed,2-Probably true,3-Possibly true,4-Doubtfully true,5-Improbable,6-Cannot be judged. Multiple information reliabilities should be comma separated, example: 1-Confirmed,2-Probably true",
+          "description": "Filter by specific information reliability. Acceptable values are:1-Confirmed,2-Probably true,3-Possibly true,4-Doubtfully true,5-Improbable,6-Cannot be judged. Multiple information reliabilities should be comma separated, example: 1-Confirmed,2-Probably true",
+          "options": [
+            "1-Confirmed",
+            "2-Probably true",
+            "3-Possibly true",
+            "4-Doubtfully true",
+            "5-Improbable",
+            "6-Cannot be judged"
+          ]
         },
         {
           "name": "start_date",
@@ -175,8 +201,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Should be Date or Default is Now - 6 months (YYYY-MM-DD)",
-          "description": "Should be Date or Default is Now - 6 months (YYYY-MM-DD)"
+          "tooltip": "Filter by report published date ,Default is Current Date",
+          "description": "Filter by report published date ,Default is Current Date"
         },
         {
           "name": "end_date",
@@ -185,8 +211,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Should be Date or Default is Current Date (YYYY-MM-DD)",
-          "description": "Should be Date or Default is Current Date (YYYY-MM-DD)"
+          "tooltip": "Filter by report published date, default is today's date.",
+          "description": "Filter by report published date, default is today's date."
         },
         {
           "name": "page",
@@ -289,7 +315,7 @@
       "operation": "get_phishing_campaigns",
       "title": "Get Phishing Campaigns",
       "annotation": "get_phishing_campaigns",
-      "description": "Get list of phishing campaigns for the given organization ID",
+      "description": "Get list of phishing campaigns discovered by FortiRecon's Watermarks for the given organisation.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -339,7 +365,7 @@
       "operation": "get_phishing_campaigns_by_id",
       "title": "Get Phishing Campaigns By ID",
       "annotation": "get_phishing_campaigns_by_id",
-      "description": "Get Phishing Campaigns Details By Phishing Campaign ID",
+      "description": "Get specific of phishing attempt by its id discovered by FortiRecon for the given organisation.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -374,7 +400,7 @@
       "operation": "get_rogue_apps",
       "title": "Get Rogue Apps",
       "annotation": "get_rogue_apps",
-      "description": "Get list of phishing campaigns for the given organization ID.",
+      "description": "Get list of Rogue Apps, also called Rogue Mobile Applications, are fake apps that try to look like apps from trusted brands discovered by FortiRecon for the given organisation.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -383,13 +409,17 @@
         {
           "name": "status",
           "title": "Status",
-          "type": "text",
+          "type": "multiselect",
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Should be comma separated string or single string. \nexample:Non-Functional,Offline\n\n",
-          "placeholder": "example:Non-Functional,Offline",
-          "tooltip": "Should be comma separated string or single string. "
+          "description": "Filter by specific Rogue App status type. Official:published by officially recognized user/s, Unofficial:apps published by user/s that are NOT recognized officially, RogueApps:unofficial apps deemed to be potentially malicious, Threat alert,Threat report.",
+          "tooltip": "Filter by specific Rogue App status type. Official:published by officially recognized user/s, Unofficial:apps published by user/s that are NOT recognized officially, RogueApps:unofficial apps deemed to be potentially malicious, Threat alert,Threat report.",
+          "options": [
+            "Official",
+            "Unofficial",
+            "RogueApps"
+          ]
         },
         {
           "name": "keyword",
@@ -398,8 +428,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Keyword"
+          "tooltip": "Filter by specific keyword in these fields: Keyword, Source Name, Developer Name, App Name",
+          "description": "Filter by specific keyword in these fields: Keyword, Source Name, Developer Name, App Name"
         },
         {
           "name": "page",
@@ -479,7 +509,7 @@
       "operation": "get_takedown_requests",
       "title": "Get Takedown Requests",
       "annotation": "get_takedown_requests",
-      "description": "Get list of takedown requests for the given organization ID.",
+      "description": "Get list of takedown requests for rogue apps, typo domains for the given organisation.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -488,22 +518,34 @@
         {
           "name": "status",
           "title": "Status",
-          "type": "text",
+          "type": "multiselect",
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "example:Non-Functional,Offline",
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Should be comma separated string or single string. \nexample:Non-Functional,Offline\n\n"
+          "tooltip": "Filter by specific status type.",
+          "description": "Filter by specific status type.",
+          "options": [
+            "Requested",
+            "Acknowledged",
+            "Initiated",
+            "Closed"
+          ]
         },
         {
           "name": "category",
           "title": "Category",
-          "type": "text",
+          "type": "multiselect",
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Category"
+          "description": "Filter by specific category.",
+          "options": [
+            "Phishing",
+            "Fraudulentdomains",
+            "Typosquatting",
+            "RogueApps",
+            "Alert"
+          ]
         },
         {
           "name": "keyword",
@@ -512,7 +554,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Keyword"
+          "tooltip":"Filter by specific keyword in these fields: ticketId, entity (it may be domain name, title of a report, Phished Domain, etc)",
+          "description": "Filter by specific keyword in these fields: ticketId, entity (it may be domain name, title of a report, Phished Domain, etc)"
         },
         {
           "name": "start_date",
@@ -521,8 +564,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Should be Date or Default is Now - 6 months (YYYY-MM-DD)",
-          "description": "Should be Date or Default is Now - 6 months (YYYY-MM-DD)"
+          "tooltip": "Filter by the Date on which the Takedown was requested.default is last 6 months.",
+          "description": "Filter by the Date on which the Takedown was requested, default is last 6 months."
         },
         {
           "name": "end_date",
@@ -531,8 +574,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Should be Date or Default is Current Date (YYYY-MM-DD)",
-          "description": "Should be Date or Default is Current Date (YYYY-MM-DD)"
+          "tooltip": "Filter by the Date on which the Takedown was requested.default is today's date.",
+          "description": "Filter by the Date on which the Takedown was requested, default is today's date."
         },
         {
           "name": "page",
@@ -584,7 +627,7 @@
       "operation": "get_typo_domains",
       "title": "Get Typo Domains",
       "annotation": "get_typo_domains",
-      "description": "Get list of typo domains for the given organization ID.",
+      "description": "Get list typo domains, also called Typosquatting, also called URL hijacking, a sting site, or a fake URL, is a form of cybersquatting, discovered by FortiRecon for the given organisation.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -593,13 +636,17 @@
         {
           "name": "status",
           "title": "Status",
-          "type": "text",
+          "type": "multiselect",
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "example:Non-Functional,Offline",
-          "tooltip": "Should be comma separated string or single string. ",
-          "description": "Should be comma separated string or single string. \nexample:Non-Functional,Offline"
+          "tooltip": "Filter by specific domain status. Acceptable values are: Non-Functional,Offline,Online.",
+          "description": "Filter by specific domain status. Acceptable values are: Non-Functional,Offline,Online.",
+          "options": [
+            "Non-Functional",
+            "Offline",
+            "Online"
+          ]
         },
         {
           "name": "original_domain",
@@ -608,9 +655,9 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Should be comma separated string or single string. \nexample: test.com,test1.com",
           "placeholder": "example: test.com,test1.com",
-          "tooltip": "Should be comma separated string or single string. "
+          "tooltip": "Filter by specific a original domain. Multiple domains should be comma separated, example: example.com,test.com",
+          "description": "Filter by specific a original domain. Multiple domains should be comma separated, example: example.com,test.com"
         },
         {
           "name": "keyword",
@@ -619,7 +666,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Keyword"
+          "description": "Filter by specific keyword in these fields"
         },
         {
           "name": "severity",
@@ -639,8 +686,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Should be Date or Default is Now - 6 months (YYYY-MM-DD)",
-          "description": "Should be Date or Default is Now - 6 months (YYYY-MM-DD)"
+          "tooltip": "Filter by WhoIS Date (date found in the whois record for that domain) , default is last 6 months.",
+          "description": "Filter by WhoIS Date (date found in the whois record for that domain) , default is last 6 months."
         },
         {
           "name": "end_date",
@@ -649,8 +696,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Should be Date or Default is Current Date (YYYY-MM-DD)",
-          "description": "Should be Date or Default is Current Date (YYYY-MM-DD)"
+          "tooltip": "Filter by WhoIS Date (date found in the whois record for that domain), default is today's date.",
+          "description": "Filter by WhoIS Date (date found in the whois record for that domain), default is today's date."
         },
         {
           "name": "page",
@@ -701,7 +748,7 @@
       "operation": "get_typo_domain_by_id",
       "title": "Get Typo Domain By ID",
       "annotation": "get_typo_domain_by_id",
-      "description": "Get typo domain details by Typo Domain ID",
+      "description": "Get typo domain details by typo domain ID",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -709,12 +756,12 @@
       "parameters": [
         {
           "name": "id",
-          "title": "Typo_Domain_ID",
+          "title": "Typo Domain ID",
           "type": "text",
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "Typo_Domain_ID"
+          "description": "ID of typo domain which details you want to retrieve."
         }
       ],
       "output_schema": {
