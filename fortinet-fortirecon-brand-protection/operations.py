@@ -64,15 +64,15 @@ def _check_health(config: dict) -> bool:
 
 def search_alerts(config: dict, params: dict) -> dict:
     MK = MakeRestApiCall(config=config)
-
     endpoint = "/bp/{org_id}/alerts"
     method = "GET"
     if params.get("start_date"):
         params["start_date"] = handle_date(params.get("start_date"))
     if params.get("end_date"):
         params["end_date"] = handle_date(params.get("end_date"))
-
-    response = MK.make_request(endpoint=endpoint, method=method, params=params)
+    multiselect = ["source_category", "report_type", "source_reliability", "information_reliability"]
+    payload = build_payload(params, multiselect)
+    response = MK.make_request(endpoint=endpoint, method=method, params=payload)
     return response
 
 
@@ -88,7 +88,6 @@ def get_alert_details_by_id(config: dict, params: dict) -> dict:
 def get_phishing_campaigns(config: dict, params: dict) -> dict:
     MK = MakeRestApiCall(config=config)
     endpoint = "/bp/{org_id}/phishing_campaigns"
-
     method = "GET"
     response = MK.make_request(endpoint=endpoint, method=method, params=params)
     return response
@@ -104,10 +103,9 @@ def get_phishing_campaigns_by_id(config: dict, params: dict) -> dict:
 
 def get_rogue_app_by_id(config: dict, params: dict) -> dict:
     MK = MakeRestApiCall(config=config)
-    endpoint = "/bp/{org_id}/rogue_apps" + "/{0}".format(params.pop("id"))
+    endpoint = "/bp/{org_id}/rogue_apps" + "/{0}".format(params.get("id"))
     method = "GET"
-
-    response = MK.make_request(endpoint=endpoint, method=method, params=params)
+    response = MK.make_request(endpoint=endpoint, method=method, params={})
     return response
 
 
@@ -115,7 +113,8 @@ def get_rogue_apps(config: dict, params: dict) -> dict:
     MK = MakeRestApiCall(config=config)
     endpoint = "/bp/{org_id}/rogue_apps"
     method = "GET"
-    response = MK.make_request(endpoint=endpoint, method=method, params=params)
+    payload = build_payload(params=params, multiselect=["status"])
+    response = MK.make_request(endpoint=endpoint, method=method, params=payload)
     return response
 
 
@@ -127,7 +126,9 @@ def get_takedown_requests(config: dict, params: dict) -> dict:
         params["start_date"] = handle_date(params.get("start_date"))
     if params.get("end_date"):
         params["end_date"] = handle_date(params.get("end_date"))
-    response = MK.make_request(endpoint=endpoint, method=method, params=params)
+    multiselect = ["status", "category"]
+    payload = build_payload(params=params, multiselect=multiselect)
+    response = MK.make_request(endpoint=endpoint, method=method, params=payload)
     return response
 
 
@@ -147,12 +148,22 @@ def get_typo_domains(config: dict, params: dict) -> dict:
         params["start_date"] = handle_date(params.get("start_date"))
     if params.get("end_date"):
         params["end_date"] = handle_date(params.get("end_date"))
-    response = MK.make_request(endpoint=endpoint, method=method, params=params)
+    multiselect = ["status"]
+    payload = build_payload(params=params, multiselect=multiselect)
+    response = MK.make_request(endpoint=endpoint, method=method, params=payload)
     return response
 
 
 def handle_date(str_date):
     return datetime.strptime(str_date, "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d")
+
+
+def build_payload(params={}, multiselect=[]):
+    for k in multiselect:
+        v = params.get(k)
+        if v is not None:
+            params[k] = ",".join(v)
+    return params
 
 
 operations = {
