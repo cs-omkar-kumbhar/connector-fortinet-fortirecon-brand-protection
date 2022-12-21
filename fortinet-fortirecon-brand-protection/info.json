@@ -761,7 +761,7 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "description": ""
+          "description": "ID of typo domain which details you want to retrieve."
         }
       ],
       "output_schema": {
