@@ -9,7 +9,7 @@
   "category": "Attack Surface Management",
   "icon_small_name": "small_icon.png",
   "icon_large_name": "large_icon.png",
-  "help_online": "",
+  "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/fortinet-fortirecon-brand-protection/475/fortinet-fortirecon-brand-protection-v1-0-0",
   "configuration": {
     "fields": [
       {
@@ -39,7 +39,7 @@
         "editable": true,
         "visible": true,
         "required": true,
-        "description": "Specify the organization Id for which you will perform the search"
+        "description": "The organization ID on which FortiRecon operations are to be performed."
       },
       {
         "name": "verify_ssl",
@@ -58,7 +58,7 @@
       "operation": "search_alerts",
       "title": "Search Alerts",
       "annotation": "search_alerts",
-      "description": "Get list of alerts(reports) published by FortiRecon for the given organisation.",
+      "description": "Retrieves a list of alerts(reports) published by FortiRecon based on the filter criteria like tags, adversary, relevance, and any other details you have specified.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -72,8 +72,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example: Medium,High,Low",
-          "tooltip": "Filter by specific relevance rating. Multiple relevance ratings should be comma separated, example:Medium,High,Low.",
-          "description": "Filter by specific relevance rating. Multiple relevance ratings should be comma separated, example:Medium,High,Low."
+          "tooltip": "Specify a relevance rating to filter the alerts. Separate multiple relevance ratings using a comma. For example, Medium, High, Low.",
+          "description": "(Optional) Specify a relevance rating to filter the alerts. Separate multiple relevance ratings using a comma. For example, Medium, High, Low."
         },
         {
           "name": "tags",
@@ -83,8 +83,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example:phishing,malware,exploited",
-          "tooltip": "Filter by specific tag. Multiple tags should be comma separated, example:phishing,malware,exploited",
-          "description": "Filter by specific tag. Multiple tags should be comma separated, example:phishing,malware,exploited"
+          "tooltip": "Specify a tag to filter the alerts. Separate multiple relevance ratings using a comma. For example, phishing, malware, exploited.",
+          "description": "(Optional) Specify a tag to filter the alerts. Separate multiple relevance ratings using a comma. For example, phishing, malware, exploited."
         },
         {
           "name": "adversary",
@@ -94,8 +94,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example: apt35,foo,bar",
-          "tooltip": "Filter by specific adversary(actor names, APT groups). Multiple adversary should be comma separated, example:apt35,foo,bar",
-          "description": "Filter by specific adversary(actor names, APT groups). Multiple adversary should be comma separated, example:apt35,foo,bar"
+          "tooltip": "Specify an adversary(actor names, APT groups) to filter the alerts. Separate multiple adversaries using a comma. For example, apt35, foo, bar.",
+          "description": "(Optional) Specify an adversary(actor names, APT groups) to filter the alerts. Separate multiple adversaries using a comma. For example, apt35, foo, bar."
         },
         {
           "name": "source_category",
@@ -104,8 +104,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by specific source category. Acceptable values are: Darknet,OSINT,Technical Intelligence. Multiple source categories should be comma separated, example: Darknet,OSINT,Technical Intelligence",
-          "description": "Filter by specific source category. Acceptable values are: Darknet,OSINT,Technical Intelligence. Multiple source categories should be comma separated, example: Darknet,OSINT,Technical Intelligence",
+          "tooltip": "Select a source category from the following options to filter the alerts",
+          "description": "(Optional) Select a source category from the following options to filter the alerts: Darknet, OSINT,Technical Intelligence ",
           "options": [
            "Darknet",
            "OSINT",
@@ -119,8 +119,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by specific report type. Acceptable values are: Flash Report, Flash Alert, Threat alert,Threat report. Multiple report types should be comma separated, example: Flash Report,Flash Alert,Threat alert,Threat report",
-          "description": "Filter by specific report type. Acceptable values are: Flash Report, Flash Alert, Threat alert,Threat report. Multiple report types should be comma separated, example: Flash Report,Flash Alert,Threat alert,Threat report",
+          "tooltip": "(Optional) Select a report from the following options type to filter the alerts.",
+          "description": "(Optional) Select a report from the following options type to filter the alerts. Flash Report ,Flash Alert ",
           "options": [
            "Flash Report",
             "Flash Alert"
@@ -134,8 +134,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example: manufacturing, government,hospitality",
-          "tooltip": "Filter by specific industry. Multiple industries should be comma separated, example: manufacturing, government,hospitality.",
-          "description": "Filter by specific industry. Multiple industries should be comma separated, example: manufacturing, government,hospitality."
+          "tooltip": "Specify an industry to filter the alerts. Separate multiple industries using a comma. For example, manufacturing, government, and hospitality.",
+          "description": "(Optional) Specify an industry to filter the alerts. Separate multiple industries using a comma. For example, manufacturing, government, and hospitality."
         },
         {
           "name": "geography",
@@ -145,8 +145,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example: south america,western europe, east asia,africa.",
-          "tooltip": "Filter by geography. Multiple geographies should be comma separated, example: south america,western europe, east asia,africa.",
-          "description": "Filter by geography. Multiple geographies should be comma separated, example: south america,western europe, east asia,africa."
+          "tooltip": "Specify a geography to filter the alerts. Separate multiple geographies using a comma. For example, South America, Western Europe, East Asia, and Africa. ",
+          "description": "Optional) Specify a geography to filter the alerts. Separate multiple geographies using a comma. For example, South America, Western Europe, East Asia, and Africa."
         },
         {
           "name": "keyword",
@@ -155,8 +155,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by specific keyword in these fields:Report ID, Report Title, Report Summary, Report Content, Source Category. Actors, Motivation, Threats, Industry Tags.",
-          "description": "Filter by specific keyword in these fields:Report ID, Report Title, Report Summary, Report Content, Source Category. Actors, Motivation, Threats, Industry Tags."
+          "tooltip": "Specify a keyword to filter the alerts. Separate multiple geographies using a comma. Some example keywords are Report ID, Report Title, Report Summary, Report Content, Source Category. Actors, Motivation, Threats, and Industry Tags.",
+          "description": "(Optional) Specify a keyword to filter the alerts. Separate multiple geographies using a comma. Some example keywords are Report ID, Report Title, Report Summary, Report Content, Source Category. Actors, Motivation, Threats, and Industry Tags."
         },
         {
           "name": "source_reliability",
@@ -165,8 +165,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by specific source reliability.",
-          "description": "Filter by specific source reliability.Acceptable values are:A-Reliable,B-Usually reliable,C-Fairly reliable,D-Not usually reliable,E-Unreliable,F-Cannot be judged.",
+          "tooltip": "Select a source reliability from the following options to filter the alerts.",
+          "description": "(Optional) Select a source reliability from the following options to filter the alerts:  A-Reliable, B-Usually reliable, C-Fairly reliable, D-Not usually reliable, E-Unreliable, F-Cannot be judged ",
           "options": [
             "A-Reliable",
             "B-Usually reliable",
@@ -183,8 +183,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip":"Filter by specific information reliability. Acceptable values are:1-Confirmed,2-Probably true,3-Possibly true,4-Doubtfully true,5-Improbable,6-Cannot be judged. Multiple information reliabilities should be comma separated, example: 1-Confirmed,2-Probably true",
-          "description": "Filter by specific information reliability. Acceptable values are:1-Confirmed,2-Probably true,3-Possibly true,4-Doubtfully true,5-Improbable,6-Cannot be judged. Multiple information reliabilities should be comma separated, example: 1-Confirmed,2-Probably true",
+          "tooltip":"Select an information reliability from the following options to filter the alerts.",
+          "description": "(Optional) Select an information reliability from the following options to filter the alerts:  1-Confirmed, 2-Probably true, 3-Possibly true, 4-Doubtfully true, 5-Improbable, 6-Cannot be judged ",
           "options": [
             "1-Confirmed",
             "2-Probably true",
@@ -201,8 +201,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by report published date ,Default is Current Date",
-          "description": "Filter by report published date ,Default is Current Date"
+          "tooltip": "Specify the start date of the range from when you want to retrieve the report.",
+          "description": "(Optional) Specify the start date of the range from when you want to retrieve the report."
         },
         {
           "name": "end_date",
@@ -211,8 +211,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by report published date, default is today's date.",
-          "description": "Filter by report published date, default is today's date."
+          "tooltip": "Specify the end date of the range from when you want to retrieve the report.",
+          "description": "(Optional) Specify the end date of the range from when you want to retrieve the report."
         },
         {
           "name": "page",
@@ -221,7 +221,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page number from which you want to retrieve records."
+          "description": "(Optional) Specify the page number from which to retrieve the records."
         },
         {
           "name": "size",
@@ -230,7 +230,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of records that this operation should return for the current page"
+          "description": "(Optional) Specify the count of records that the operation should include for the current page."
         }
       ],
       "output_schema": {
@@ -272,7 +272,7 @@
       "operation": "get_alert_details_by_id",
       "title": "Get Alert Details By Alert ID",
       "annotation": "get_alert_details_by_id",
-      "description": "Get alert details by alert ID",
+      "description": "Retrieves details of an alert based on the alert ID you have specified",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -285,8 +285,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "tooltip": "Alert ID",
-          "description": "Alert ID"
+          "tooltip": "Specify the alert ID of the alert to get its details.",
+          "description": "Specify the alert ID of the alert to get its details."
         }
       ],
       "output_schema": {
@@ -315,7 +315,7 @@
       "operation": "get_phishing_campaigns",
       "title": "Get Phishing Campaigns",
       "annotation": "get_phishing_campaigns",
-      "description": "Get list of phishing campaigns discovered by FortiRecon's Watermarks for the given organisation.",
+      "description": "Retrieves a list of phishing campaigns discovered by FortiRecon's Watermarks for the given organization.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -328,7 +328,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page number from which you want to retrieve records."
+          "description": "(Optional) Specify the page number from which to retrieve the records."
         },
         {
           "name": "size",
@@ -337,7 +337,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of records that this operation should return for the current page"
+          "description": "(Optional) Specify the count of records that the operation should include for the current page."
         }
       ],
       "output_schema": {
@@ -365,7 +365,7 @@
       "operation": "get_phishing_campaigns_by_id",
       "title": "Get Phishing Campaigns By ID",
       "annotation": "get_phishing_campaigns_by_id",
-      "description": "Get specific of phishing attempt by its id discovered by FortiRecon for the given organisation.",
+      "description": "Retrieves details of a phishing attempt discovered by FortiRecon based on the ID you have specified.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -378,8 +378,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "tooltip": "Phishing Campaign ID",
-          "description": "Phishing Campaign ID"
+          "tooltip": "Specify the ID of the phishing attempt to get its details.",
+          "description": "Specify the ID of the phishing attempt to get its details."
         }
       ],
       "output_schema": {
@@ -400,7 +400,7 @@
       "operation": "get_rogue_apps",
       "title": "Get Rogue Apps",
       "annotation": "get_rogue_apps",
-      "description": "Get list of Rogue Apps, also called Rogue Mobile Applications, are fake apps that try to look like apps from trusted brands discovered by FortiRecon for the given organisation.",
+      "description": "Retrieves a list of Rogue Apps based on the status and keywords that you have specified for the query; rogue apps are mobile applications trying to look like apps from trusted brands.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -413,8 +413,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Filter by specific Rogue App status type. Official:published by officially recognized user/s, Unofficial:apps published by user/s that are NOT recognized officially, RogueApps:unofficial apps deemed to be potentially malicious, Threat alert,Threat report.",
-          "tooltip": "Filter by specific Rogue App status type. Official:published by officially recognized user/s, Unofficial:apps published by user/s that are NOT recognized officially, RogueApps:unofficial apps deemed to be potentially malicious, Threat alert,Threat report.",
+          "description": "(Optional) Select the rogue app's status type from the following options to filter the results:  Official: Apps published by officially recognized users, Unofficial:Apps published by users that are not recognized officially, RogueApps: Apps published by known malicious actors or deemed to be potentially malicious.",
+          "tooltip": "Select the rogue app's status type from the following options to filter the results.",
           "options": [
             "Official",
             "Unofficial",
@@ -428,8 +428,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by specific keyword in these fields: Keyword, Source Name, Developer Name, App Name",
-          "description": "Filter by specific keyword in these fields: Keyword, Source Name, Developer Name, App Name"
+          "tooltip": "Specify the keywords to filter the results. For example: Source Name, Developer Name, App Name.",
+          "description": "(Optional) Specify the keywords to filter the results. For example: Source Name, Developer Name, App Name."
         },
         {
           "name": "page",
@@ -438,7 +438,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page number from which you want to retrieve records."
+          "description": "(Optional) Specify the page number from which to retrieve the records."
         },
         {
           "name": "size",
@@ -447,7 +447,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of records that this operation should return for the current page"
+          "description": "(Optional) Specify the count of records that the operation should include for the current page."
         }
       ],
       "output_schema": {
@@ -475,7 +475,7 @@
       "operation": "get_rogue_app_by_id",
       "title": "Get Rogue App By ID",
       "annotation": "get_rogue_app_by_id",
-      "description": "Get Rogue Details App By Rogue app ID",
+      "description": "Retrieves details of a rogue app based on the Rogue App ID that you have specified.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -488,7 +488,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "Rogue App ID"
+          "tooltip": "Specify an ID of the rogue app to get its details.",
+          "description": "Specify an ID of the rogue app to get its details."
         }
       ],
       "output_schema": {
@@ -509,7 +510,7 @@
       "operation": "get_takedown_requests",
       "title": "Get Takedown Requests",
       "annotation": "get_takedown_requests",
-      "description": "Get list of takedown requests for rogue apps, typo domains for the given organisation.",
+      "description": "Retrieves a list of takedown requests for rogue apps and typo domains for the given organization.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -522,8 +523,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by specific status type.",
-          "description": "Filter by specific status type.",
+          "tooltip": "Select the take-down request status from the following options to filter the results.",
+          "description": "(Optional) Select the take-down request status from the following options to filter the results: Requested, Acknowledged, Initiated, Closed.",
           "options": [
             "Requested",
             "Acknowledged",
@@ -538,7 +539,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Filter by specific category.",
+          "tooltip": "Select the take-down request category from the following options to filter the results.",
+          "description": "(Optional) Select the take-down request category from the following options to filter the results:  Phishing, Fraudulentdomains, Typosquatting, RogueApps, Alert.",
           "options": [
             "Phishing",
             "Fraudulentdomains",
@@ -554,8 +556,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip":"Filter by specific keyword in these fields: ticketId, entity (it may be domain name, title of a report, Phished Domain, etc)",
-          "description": "Filter by specific keyword in these fields: ticketId, entity (it may be domain name, title of a report, Phished Domain, etc)"
+          "tooltip":"(Optional) Specify the keywords to filter the results. For example: ticketId, entity (It may be a domain name, the title of a report, Phished Domain, etc)",
+          "description": "(Optional) Specify the keywords to filter the results. For example: ticketId, entity (It may be a domain name, the title of a report, Phished Domain, etc)"
         },
         {
           "name": "start_date",
@@ -564,8 +566,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by the Date on which the Takedown was requested.default is last 6 months.",
-          "description": "Filter by the Date on which the Takedown was requested, default is last 6 months."
+          "tooltip": "Specify the start date of the range when the takedown was requested; default is last 6 months.",
+          "description": "(Optional) Specify the start date of the range when the takedown was requested; default is last 6 months."
         },
         {
           "name": "end_date",
@@ -574,8 +576,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by the Date on which the Takedown was requested.default is today's date.",
-          "description": "Filter by the Date on which the Takedown was requested, default is today's date."
+          "tooltip": "Specify the end date of the range when the takedown was requested; default is today's date.",
+          "description": "(Optional) Specify the end date of the range when the takedown was requested; default is today's date."
         },
         {
           "name": "page",
@@ -584,7 +586,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page number from which you want to retrieve records."
+          "description": "(Optional) Specify the page number from which to retrieve the records."
         },
         {
           "name": "size",
@@ -593,7 +595,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of records that this operation should return for the current page"
+          "description": "(Optional) Specify the count of records that the operation should include for the current page."
         }
       ],
       "output_schema": {
@@ -627,7 +629,7 @@
       "operation": "get_typo_domains",
       "title": "Get Typo Domains",
       "annotation": "get_typo_domains",
-      "description": "Get list typo domains, also called Typosquatting, also called URL hijacking, a sting site, or a fake URL, is a form of cybersquatting, discovered by FortiRecon for the given organisation.",
+      "description": "Retrieves a list of typo domains discovered by FortiRecon for the given organization; also called Typosquatting, URL hijacking, sting site, or a fake URL is a form of cybersquatting where malicious actors register and use an internet domain similar to an organization's trademarks, service marks, company names, or personal names.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -640,8 +642,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by specific domain status. Acceptable values are: Non-Functional,Offline,Online.",
-          "description": "Filter by specific domain status. Acceptable values are: Non-Functional,Offline,Online.",
+          "tooltip": "Select the domain status from the following options to filter the results.",
+          "description": "(Optional) Select the domain status from the following options to filter the results: Non-Functional,Offline,Online.",
           "options": [
             "Non-Functional",
             "Offline",
@@ -656,8 +658,8 @@
           "visible": true,
           "required": false,
           "placeholder": "example: test.com,test1.com",
-          "tooltip": "Filter by specific a original domain. Multiple domains should be comma separated, example: example.com,test.com",
-          "description": "Filter by specific a original domain. Multiple domains should be comma separated, example: example.com,test.com"
+          "tooltip": "Specify the original domain name to filter the results. Multiple domains should be comma separated. For example, example.com, test.com",
+          "description": "(Optional) Specify the original domain name to filter the results. Multiple domains should be comma separated. For example, example.com, test.com"
         },
         {
           "name": "keyword",
@@ -666,7 +668,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Filter by specific keyword in these fields"
+          "tooltip": "Specify keywords to filter the results.",
+          "description": "(Optional) Specify keywords to filter the results. For example, example"
         },
         {
           "name": "severity",
@@ -675,9 +678,9 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "placeholder": "ex.1 50to80, ex.2 0to80",
-          "tooltip": "Should be string ex.1 50to80, ex.2 0to80",
-          "description": "Should be string ex.1 50to80, ex.2 0to80"
+          "placeholder": "For example: 50to80, 0to80S.",
+          "tooltip": "Specify the severity of the request to filter the results. Severity can range from 0 to 100.",
+          "description": "(Optional) Specify the severity of the request to filter the results. Severity can range from 0 to 100. For example: 50to80, 0to80S."
         },
         {
           "name": "start_date",
@@ -686,8 +689,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by WhoIS Date (date found in the whois record for that domain) , default is last 6 months.",
-          "description": "Filter by WhoIS Date (date found in the whois record for that domain) , default is last 6 months."
+          "tooltip": "Specify the start date of the date range to filter the results based on the date found in the whois record for that domain. Default is last 6 months.",
+          "description": "(Optional) Specify the start date of the date range to filter the results based on the date found in the whois record for that domain. Default is last 6 months."
         },
         {
           "name": "end_date",
@@ -696,8 +699,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by WhoIS Date (date found in the whois record for that domain), default is today's date.",
-          "description": "Filter by WhoIS Date (date found in the whois record for that domain), default is today's date."
+          "tooltip": "Specify the end date of the date range to filter the results based on the date found in the whois record for that domain. Default is the current date.",
+          "description": "(Optional) Specify the end date of the date range to filter the results based on the date found in the whois record for that domain. Default is the current date."
         },
         {
           "name": "page",
@@ -706,7 +709,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Page number from which you want to retrieve records."
+          "description": "(Optional) Specify the page number from which to retrieve the records."
         },
         {
           "name": "size",
@@ -715,7 +718,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "Maximum number of records that this operation should return for the current page"
+          "description": "(Optional) Specify the count of records that the operation should include for the current page."
         }
       ],
       "output_schema": {
@@ -748,7 +751,7 @@
       "operation": "get_typo_domain_by_id",
       "title": "Get Typo Domain By ID",
       "annotation": "get_typo_domain_by_id",
-      "description": "Get typo domain details by typo domain ID",
+      "description": "Retrieves details of a typo domain based on the typo domain ID you have specified.",
       "category": "investigation",
       "is_config_required": true,
       "visible": true,
@@ -761,7 +764,8 @@
           "editable": true,
           "visible": true,
           "required": true,
-          "description": "ID of typo domain which details you want to retrieve."
+          "tooltip": "Specify the ID of the typo domain to get its details.",
+          "description": "Specify the ID of the typo domain to get its details."
         }
       ],
       "output_schema": {
