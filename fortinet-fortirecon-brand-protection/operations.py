@@ -63,6 +63,7 @@ def _check_health(config: dict) -> bool:
 
 
 def search_alerts(config: dict, params: dict) -> dict:
+    # deprecated action
     MK = MakeRestApiCall(config=config)
     endpoint = "/bp/{org_id}/alerts"
     method = "GET"
@@ -77,6 +78,7 @@ def search_alerts(config: dict, params: dict) -> dict:
 
 
 def get_alert_details_by_id(config: dict, params: dict) -> dict:
+    # deprecated action
     MK = MakeRestApiCall(config=config)
     alert_id = params.pop("id")
     endpoint = "/bp/{org_id}/alerts/"+"{0}".format(alert_id)
@@ -86,6 +88,7 @@ def get_alert_details_by_id(config: dict, params: dict) -> dict:
 
 
 def get_phishing_campaigns(config: dict, params: dict) -> dict:
+    # deprecated action
     MK = MakeRestApiCall(config=config)
     endpoint = "/bp/{org_id}/phishing_campaigns"
     method = "GET"
@@ -94,6 +97,7 @@ def get_phishing_campaigns(config: dict, params: dict) -> dict:
 
 
 def get_phishing_campaigns_by_id(config: dict, params: dict) -> dict:
+    # deprecated action
     MK = MakeRestApiCall(config=config)
     endpoint = "/bp/{org_id}/phishing_campaigns"+"/{0}".format(params.pop("id"))
     method = "GET"
@@ -133,6 +137,7 @@ def get_takedown_requests(config: dict, params: dict) -> dict:
 
 
 def get_typo_domain_by_id(config: dict, params: dict) -> dict:
+    # deprecated action
     MK = MakeRestApiCall(config=config)
     endpoint = "/bp/{org_id}/typo_domains"+"/{0}".format(params.pop("id"))
     method = "GET"
@@ -141,6 +146,7 @@ def get_typo_domain_by_id(config: dict, params: dict) -> dict:
 
 
 def get_typo_domains(config: dict, params: dict) -> dict:
+    # deprecated action
     MK = MakeRestApiCall(config=config)
     endpoint = "/bp/{org_id}/typo_domains"
     method = "GET"
@@ -167,13 +173,7 @@ def build_payload(params={}, multiselect=[]):
 
 
 operations = {
-    "search_alerts": search_alerts,
-    "get_alert_details_by_id": get_alert_details_by_id,
-    "get_phishing_campaigns": get_phishing_campaigns,
-    "get_phishing_campaigns_by_id": get_phishing_campaigns_by_id,
     "get_rogue_apps": get_rogue_apps,
     "get_takedown_requests": get_takedown_requests,
-    "get_typo_domains": get_typo_domains,
-    "get_rogue_app_by_id": get_rogue_app_by_id,
-    "get_typo_domain_by_id": get_typo_domain_by_id
+    "get_rogue_app_by_id": get_rogue_app_by_id
 }
