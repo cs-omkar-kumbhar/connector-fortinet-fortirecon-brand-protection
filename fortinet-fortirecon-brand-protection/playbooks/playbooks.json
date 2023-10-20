@@ -2,343 +2,58 @@
   "type": "workflow_collections",
   "data": [
     {
-      "uuid": "c95aa63e-9dd7-4a9c-855c-1571887b73cf",
+      "uuid": "e4159523-7f63-499d-bcd6-5da54688d4c1",
       "@type": "WorkflowCollection",
-      "name": "Sample - Fortinet FortiRecon Brand Protection - 2.0.0",
-      "description": "FortiRecon is a Digital Risk Protection Service (DRPS) product that provides an outside-the-network view to the risks posed to your enterprise.",
-      "visible": true,
-      "image": null,
-      "recordTags": [
-        "Fortinet",
-        "fortinet-fortirecon-brand-protection"
-      ],
       "workflows": [
         {
           "@type": "Workflow",
-          "uuid": "3381dfc7-4221-4530-8a18-faab00efd31e",
-          "collection": "/api/3/workflow_collections/c95aa63e-9dd7-4a9c-855c-1571887b73cf",
-          "triggerLimit": null,
-          "description": "Get list of alerts(reports) published by FortiRecon for the given organisation.",
-          "name": "Search Alerts",
-          "tag": "#Fortinet FortiRecon Brand Protection",
-          "recordTags": [
-            "Fortinet",
-            "fortinet-fortirecon-brand-protection"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/886c158f-787e-41b9-85b3-b0ad669a9e63",
+          "uuid": "1288725f-b5c6-45f8-93a9-befe0a4959a2",
+          "collection": "/api/3/workflow_collections/e4159523-7f63-499d-bcd6-5da54688d4c1",
           "steps": [
             {
-              "uuid": "886c158f-787e-41b9-85b3-b0ad669a9e63",
+              "uuid": "ef6a21f5-403a-486c-8bf2-a268b17b8ceb",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "30227205-27b5-4eea-8da4-ceabe610fc2b",
-                "title": "Fortinet FortiRecon Brand Protection: Search Alerts",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "records": "{{vars.input.records[0]}}"
+                    "params": []
                   }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "cf1fe382-fbb6-405e-8fa5-b55c90fd48cd",
+              "uuid": "d25a8163-bd89-46b1-8c1d-3ae3098048fc",
               "@type": "WorkflowStep",
-              "name": "Search Alerts",
+              "name": "Get Rogue Apps",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiRecon Brand Protection",
                 "config": "''",
-                "params": [],
+                "params": {
+                  "status": "",
+                  "keyword": "",
+                  "page": "",
+                  "size": ""
+                },
                 "version": "2.0.0",
                 "connector": "fortinet-fortirecon-brand-protection",
-                "operation": "search_alerts",
-                "operationTitle": "Search Alerts",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
+                "operation": "get_rogue_apps",
+                "operationTitle": "Get Rogue Apps"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "40baad2e-c0f7-423c-bd52-3c545d1c4e54",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Search Alerts",
-              "sourceStep": "/api/3/workflow_steps/886c158f-787e-41b9-85b3-b0ad669a9e63",
-              "targetStep": "/api/3/workflow_steps/cf1fe382-fbb6-405e-8fa5-b55c90fd48cd"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "15b9f6d6-1cfe-43da-ac4c-f9c6d3b25516",
-          "collection": "/api/3/workflow_collections/c95aa63e-9dd7-4a9c-855c-1571887b73cf",
           "triggerLimit": null,
-          "description": "Get alert details by alert ID",
-          "name": "Get Alert Details By Alert ID",
-          "tag": "#Fortinet FortiRecon Brand Protection",
-          "recordTags": [
-            "Fortinet",
-            "fortinet-fortirecon-brand-protection"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/24a2180d-e0df-4ef6-b982-60290fa399ac",
-          "steps": [
-            {
-              "uuid": "24a2180d-e0df-4ef6-b982-60290fa399ac",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "23e50ea8-c7af-44ea-8496-79ec5ae5376b",
-                "title": "Fortinet FortiRecon Brand Protection: Get Alert Details By Alert ID",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "e54e54a4-dc7c-47d2-a406-65574c49b1ae",
-              "@type": "WorkflowStep",
-              "name": "Get Alert Details By Alert ID",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Fortinet FortiRecon Brand Protection",
-                "config": "''",
-                "params": [],
-                "version": "2.0.0",
-                "connector": "fortinet-fortirecon-brand-protection",
-                "operation": "get_alert_details_by_id",
-                "operationTitle": "Get Alert Details By Alert ID",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "07733dbe-286e-4f91-aff2-c25a90da3ba4",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Get Alert Details By Alert ID",
-              "sourceStep": "/api/3/workflow_steps/24a2180d-e0df-4ef6-b982-60290fa399ac",
-              "targetStep": "/api/3/workflow_steps/e54e54a4-dc7c-47d2-a406-65574c49b1ae"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "ef82c64a-bade-4e7f-95ac-c7b9ca54b84b",
-          "collection": "/api/3/workflow_collections/c95aa63e-9dd7-4a9c-855c-1571887b73cf",
-          "triggerLimit": null,
-          "description": "Get list of phishing campaigns discovered by FortiRecon's Watermarks for the given organisation.",
-          "name": "Get Phishing Campaigns",
-          "tag": "#Fortinet FortiRecon Brand Protection",
-          "recordTags": [
-            "Fortinet",
-            "fortinet-fortirecon-brand-protection"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/e74bbd7b-5b44-4b96-a240-69385d3192f5",
-          "steps": [
-            {
-              "uuid": "e74bbd7b-5b44-4b96-a240-69385d3192f5",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "c2ec5b06-fc03-4154-9494-828b11b350ee",
-                "title": "Fortinet FortiRecon Brand Protection: Get Phishing Campaigns",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "4924d822-3276-44c2-8026-88d9f580b551",
-              "@type": "WorkflowStep",
-              "name": "Get Phishing Campaigns",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Fortinet FortiRecon Brand Protection",
-                "config": "''",
-                "params": [],
-                "version": "2.0.0",
-                "connector": "fortinet-fortirecon-brand-protection",
-                "operation": "get_phishing_campaigns",
-                "operationTitle": "Get Phishing Campaigns",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "0c93d614-d8ab-4bb4-b2d8-caf04f0bfe73",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Get Phishing Campaigns",
-              "sourceStep": "/api/3/workflow_steps/e74bbd7b-5b44-4b96-a240-69385d3192f5",
-              "targetStep": "/api/3/workflow_steps/4924d822-3276-44c2-8026-88d9f580b551"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "aca7123d-8144-47aa-8044-0958b20746a8",
-          "collection": "/api/3/workflow_collections/c95aa63e-9dd7-4a9c-855c-1571887b73cf",
-          "triggerLimit": null,
-          "description": "Get specific of phishing attempt by its id discovered by FortiRecon for the given organisation.",
-          "name": "Get Phishing Campaigns By ID",
-          "tag": "#Fortinet FortiRecon Brand Protection",
-          "recordTags": [
-            "Fortinet",
-            "fortinet-fortirecon-brand-protection"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/23866f37-19d7-493b-9114-5645b71ed4dd",
-          "steps": [
-            {
-              "uuid": "23866f37-19d7-493b-9114-5645b71ed4dd",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "ad915bfb-7d86-4fd8-91f6-806c4ecbab48",
-                "title": "Fortinet FortiRecon Brand Protection: Get Phishing Campaigns By ID",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "442918c8-08cf-4df3-acf2-25a2f1a3cac4",
-              "@type": "WorkflowStep",
-              "name": "Get Phishing Campaigns By ID",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Fortinet FortiRecon Brand Protection",
-                "config": "''",
-                "params": [],
-                "version": "2.0.0",
-                "connector": "fortinet-fortirecon-brand-protection",
-                "operation": "get_phishing_campaigns_by_id",
-                "operationTitle": "Get Phishing Campaigns By ID",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "f8a20f1e-12e5-4d51-80d1-5debafa13e65",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Get Phishing Campaigns By ID",
-              "sourceStep": "/api/3/workflow_steps/23866f37-19d7-493b-9114-5645b71ed4dd",
-              "targetStep": "/api/3/workflow_steps/442918c8-08cf-4df3-acf2-25a2f1a3cac4"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "00648890-54f6-4c18-be00-6304bc8807fc",
-          "collection": "/api/3/workflow_collections/c95aa63e-9dd7-4a9c-855c-1571887b73cf",
-          "triggerLimit": null,
-          "description": "Get list of Rogue Apps, also called Rogue Mobile Applications, are fake apps that try to look like apps from trusted brands discovered by FortiRecon for the given organisation.",
+          "description": "Retrieves a list of Rogue Apps based on the status and keywords that you have specified for the query; rogue apps are mobile applications trying to look like apps from trusted brands.",
           "name": "Get Rogue Apps",
           "tag": "#Fortinet FortiRecon Brand Protection",
           "recordTags": [
@@ -350,75 +65,65 @@
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/bf3e496f-5687-403a-b2e4-644bc1a0ed3b",
+          "triggerStep": "/api/3/workflow_steps/ef6a21f5-403a-486c-8bf2-a268b17b8ceb",
+          "routes": [
+            {
+              "uuid": "7173bbb9-49d8-4cc7-93b8-290b6ee593e8",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Rogue Apps",
+              "sourceStep": "/api/3/workflow_steps/ef6a21f5-403a-486c-8bf2-a268b17b8ceb",
+              "targetStep": "/api/3/workflow_steps/d25a8163-bd89-46b1-8c1d-3ae3098048fc"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "a740d9f5-d933-48ee-8381-4fdce20fc147",
+          "collection": "/api/3/workflow_collections/e4159523-7f63-499d-bcd6-5da54688d4c1",
           "steps": [
             {
-              "uuid": "bf3e496f-5687-403a-b2e4-644bc1a0ed3b",
+              "uuid": "bfe0b0f5-1073-43f5-a97b-abccdd6125c4",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "c7b0b02a-3c25-4d49-9386-ea101d811c62",
-                "title": "Fortinet FortiRecon Brand Protection: Get Rogue Apps",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "records": "{{vars.input.records[0]}}"
+                    "params": []
                   }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "3f06b5e3-6378-46ca-a5f6-6f17aa6db522",
+              "uuid": "6f2ce8f9-d433-42c6-99e9-8c4dea193a28",
               "@type": "WorkflowStep",
-              "name": "Get Rogue Apps",
+              "name": "Get Rogue App By ID",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiRecon Brand Protection",
                 "config": "''",
-                "params": [],
+                "params": {
+                  "id": ""
+                },
                 "version": "2.0.0",
                 "connector": "fortinet-fortirecon-brand-protection",
-                "operation": "get_rogue_apps",
-                "operationTitle": "Get Rogue Apps",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
+                "operation": "get_rogue_app_by_id",
+                "operationTitle": "Get Rogue App By ID"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "533c8bc5-4f5a-472e-8870-f9d1a82781a9",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Get Rogue Apps",
-              "sourceStep": "/api/3/workflow_steps/bf3e496f-5687-403a-b2e4-644bc1a0ed3b",
-              "targetStep": "/api/3/workflow_steps/3f06b5e3-6378-46ca-a5f6-6f17aa6db522"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "9ef3fcaf-cdaa-4d1c-9452-0ba0aef7dc0f",
-          "collection": "/api/3/workflow_collections/c95aa63e-9dd7-4a9c-855c-1571887b73cf",
           "triggerLimit": null,
-          "description": "Get Rogue Details App By Rogue app ID",
+          "description": "Retrieves details of a rogue app based on the Rogue App ID that you have specified.",
           "name": "Get Rogue App By ID",
           "tag": "#Fortinet FortiRecon Brand Protection",
           "recordTags": [
@@ -430,75 +135,71 @@
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/5f9e6662-20b9-487d-bfd8-404914eac5b6",
+          "triggerStep": "/api/3/workflow_steps/bfe0b0f5-1073-43f5-a97b-abccdd6125c4",
+          "routes": [
+            {
+              "uuid": "d4242e49-15e1-4abf-a4b0-955788911f08",
+              "@type": "WorkflowRoute",
+              "label": null,
+              "isExecuted": false,
+              "name": "Start-> Get Rogue App By ID",
+              "sourceStep": "/api/3/workflow_steps/bfe0b0f5-1073-43f5-a97b-abccdd6125c4",
+              "targetStep": "/api/3/workflow_steps/6f2ce8f9-d433-42c6-99e9-8c4dea193a28"
+            }
+          ]
+        },
+        {
+          "@type": "Workflow",
+          "uuid": "7ec2156b-4456-4dbc-b94e-c9ae7dcf25dc",
+          "collection": "/api/3/workflow_collections/e4159523-7f63-499d-bcd6-5da54688d4c1",
           "steps": [
             {
-              "uuid": "5f9e6662-20b9-487d-bfd8-404914eac5b6",
+              "uuid": "cb79a773-5998-41b6-aa86-6152003f43a8",
               "@type": "WorkflowStep",
               "name": "Start",
               "description": null,
               "status": null,
               "arguments": {
-                "route": "b200f7f4-bf29-49b4-a2e7-e884c1639d2f",
-                "title": "Fortinet FortiRecon Brand Protection: Get Rogue App By ID",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
                 "step_variables": {
                   "input": {
-                    "records": "{{vars.input.records[0]}}"
+                    "params": []
                   }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
+                }
               },
               "left": "20",
               "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
+              "stepType": "/api/3/workflow_step_types/b348f017-9a94-471f-87f8-ce88b6a7ad62"
             },
             {
-              "uuid": "de56965d-0651-4849-bbee-2da358af5948",
+              "uuid": "909a8082-18f8-4b2e-993e-71d73da3b0bf",
               "@type": "WorkflowStep",
-              "name": "Get Rogue App By ID",
+              "name": "Get Takedown Requests",
               "description": null,
               "status": null,
               "arguments": {
                 "name": "Fortinet FortiRecon Brand Protection",
                 "config": "''",
-                "params": [],
+                "params": {
+                  "status": "",
+                  "category": "",
+                  "keyword": "",
+                  "start_date": "",
+                  "end_date": "",
+                  "page": "",
+                  "size": ""
+                },
                 "version": "2.0.0",
                 "connector": "fortinet-fortirecon-brand-protection",
-                "operation": "get_rogue_app_by_id",
-                "operationTitle": "Get Rogue App By ID",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
+                "operation": "get_takedown_requests",
+                "operationTitle": "Get Takedown Requests"
               },
               "left": "188",
               "top": "120",
               "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
             }
           ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "ce883046-5d50-40b2-99c3-f2c61485bf71",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Get Rogue App By ID",
-              "sourceStep": "/api/3/workflow_steps/5f9e6662-20b9-487d-bfd8-404914eac5b6",
-              "targetStep": "/api/3/workflow_steps/de56965d-0651-4849-bbee-2da358af5948"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "16344bd4-ec1c-4cd3-8256-a074fca92aea",
-          "collection": "/api/3/workflow_collections/c95aa63e-9dd7-4a9c-855c-1571887b73cf",
           "triggerLimit": null,
-          "description": "Get list of takedown requests for rogue apps, typo domains for the given organisation.",
+          "description": "Retrieves a list of takedown requests for rogue apps and typo domains for the given organization.",
           "name": "Get Takedown Requests",
           "tag": "#Fortinet FortiRecon Brand Protection",
           "recordTags": [
@@ -510,229 +211,26 @@
           "singleRecordExecution": false,
           "parameters": [],
           "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/4edb9039-60cc-4eda-88ef-aabe84821cb5",
-          "steps": [
-            {
-              "uuid": "4edb9039-60cc-4eda-88ef-aabe84821cb5",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "03d82bf7-9f05-4252-a086-3f283ea3e60a",
-                "title": "Fortinet FortiRecon Brand Protection: Get Takedown Requests",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "72216c4b-651a-41e3-8ea6-d7547ddf167f",
-              "@type": "WorkflowStep",
-              "name": "Get Takedown Requests",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Fortinet FortiRecon Brand Protection",
-                "config": "''",
-                "params": [],
-                "version": "2.0.0",
-                "connector": "fortinet-fortirecon-brand-protection",
-                "operation": "get_takedown_requests",
-                "operationTitle": "Get Takedown Requests",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
+          "triggerStep": "/api/3/workflow_steps/cb79a773-5998-41b6-aa86-6152003f43a8",
           "routes": [
             {
+              "uuid": "7711421c-70eb-4c82-961f-823452a35c20",
               "@type": "WorkflowRoute",
-              "uuid": "a8fb8211-03fa-457f-8b6f-7012086ce1ff",
               "label": null,
               "isExecuted": false,
               "name": "Start-> Get Takedown Requests",
-              "sourceStep": "/api/3/workflow_steps/4edb9039-60cc-4eda-88ef-aabe84821cb5",
-              "targetStep": "/api/3/workflow_steps/72216c4b-651a-41e3-8ea6-d7547ddf167f"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "f7c47756-2e61-4d90-b7eb-c6d74d37a45b",
-          "collection": "/api/3/workflow_collections/c95aa63e-9dd7-4a9c-855c-1571887b73cf",
-          "triggerLimit": null,
-          "description": "Get list typo domains, also called Typosquatting, also called URL hijacking, a sting site, or a fake URL, is a form of cybersquatting, discovered by FortiRecon for the given organisation.",
-          "name": "Get Typo Domains",
-          "tag": "#Fortinet FortiRecon Brand Protection",
-          "recordTags": [
-            "Fortinet",
-            "fortinet-fortirecon-brand-protection"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/906acaa4-1adf-46d7-bd3e-3273cbf4957f",
-          "steps": [
-            {
-              "uuid": "906acaa4-1adf-46d7-bd3e-3273cbf4957f",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "85f51f1c-6ca8-4c20-a15f-7b77405b6049",
-                "title": "Fortinet FortiRecon Brand Protection: Get Typo Domains",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "b6457091-0347-4bef-b506-e92a7412ceb2",
-              "@type": "WorkflowStep",
-              "name": "Get Typo Domains",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Fortinet FortiRecon Brand Protection",
-                "config": "''",
-                "params": [],
-                "version": "2.0.0",
-                "connector": "fortinet-fortirecon-brand-protection",
-                "operation": "get_typo_domains",
-                "operationTitle": "Get Typo Domains",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "69a4c9c2-a32a-428b-a132-336f8fa4caa6",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Get Typo Domains",
-              "sourceStep": "/api/3/workflow_steps/906acaa4-1adf-46d7-bd3e-3273cbf4957f",
-              "targetStep": "/api/3/workflow_steps/b6457091-0347-4bef-b506-e92a7412ceb2"
-            }
-          ]
-        },
-        {
-          "@type": "Workflow",
-          "uuid": "f7332d1d-7064-4051-ac0c-332d34388df7",
-          "collection": "/api/3/workflow_collections/c95aa63e-9dd7-4a9c-855c-1571887b73cf",
-          "triggerLimit": null,
-          "description": "Get typo domain details by typo domain ID",
-          "name": "Get Typo Domain By ID",
-          "tag": "#Fortinet FortiRecon Brand Protection",
-          "recordTags": [
-            "Fortinet",
-            "fortinet-fortirecon-brand-protection"
-          ],
-          "isActive": false,
-          "debug": false,
-          "singleRecordExecution": false,
-          "parameters": [],
-          "synchronous": false,
-          "triggerStep": "/api/3/workflow_steps/e3a1f440-811d-4aa2-887b-a3e7af066e6c",
-          "steps": [
-            {
-              "uuid": "e3a1f440-811d-4aa2-887b-a3e7af066e6c",
-              "@type": "WorkflowStep",
-              "name": "Start",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "route": "81ee7092-8e30-42d7-aa68-d712042e26ce",
-                "title": "Fortinet FortiRecon Brand Protection: Get Typo Domain By ID",
-                "resources": [
-                  "alerts"
-                ],
-                "inputVariables": [],
-                "step_variables": {
-                  "input": {
-                    "records": "{{vars.input.records[0]}}"
-                  }
-                },
-                "singleRecordExecution": false,
-                "noRecordExecution": true,
-                "executeButtonText": "Execute"
-              },
-              "left": "20",
-              "top": "20",
-              "stepType": "/api/3/workflow_step_types/f414d039-bb0d-4e59-9c39-a8f1e880b18a"
-            },
-            {
-              "uuid": "d6d57a7d-f5ae-488e-acd0-6cdf8a9afc19",
-              "@type": "WorkflowStep",
-              "name": "Get Typo Domain By ID",
-              "description": null,
-              "status": null,
-              "arguments": {
-                "name": "Fortinet FortiRecon Brand Protection",
-                "config": "''",
-                "params": [],
-                "version": "2.0.0",
-                "connector": "fortinet-fortirecon-brand-protection",
-                "operation": "get_typo_domain_by_id",
-                "operationTitle": "Get Typo Domain By ID",
-                "step_variables": {
-                  "output_data": "{{vars.result}}"
-                }
-              },
-              "left": "188",
-              "top": "120",
-              "stepType": "/api/3/workflow_step_types/0bfed618-0316-11e7-93ae-92361f002671"
-            }
-          ],
-          "routes": [
-            {
-              "@type": "WorkflowRoute",
-              "uuid": "224d6cc9-9327-4815-9959-e13ed016e7a8",
-              "label": null,
-              "isExecuted": false,
-              "name": "Start-> Get Typo Domain By ID",
-              "sourceStep": "/api/3/workflow_steps/e3a1f440-811d-4aa2-887b-a3e7af066e6c",
-              "targetStep": "/api/3/workflow_steps/d6d57a7d-f5ae-488e-acd0-6cdf8a9afc19"
+              "sourceStep": "/api/3/workflow_steps/cb79a773-5998-41b6-aa86-6152003f43a8",
+              "targetStep": "/api/3/workflow_steps/909a8082-18f8-4b2e-993e-71d73da3b0bf"
             }
           ]
         }
+      ],
+      "name": "Sample - Fortinet FortiRecon Brand Protection - 2.0.0",
+      "description": "FortiRecon is a Digital Risk Protection Service (DRPS) product that provides an outside-the-network view to the risks posed to your enterprise.",
+      "visible": true,
+      "recordTags": [
+        "Fortinet",
+        "fortinet-fortirecon-brand-protection"
       ]
     }
   ]
