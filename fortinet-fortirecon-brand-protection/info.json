@@ -55,12 +55,585 @@
   },
   "operations": [
     {
+      "operation": "get_code_repo_exposures",
+      "title": "Get Code Repo Exposures",
+      "annotation": "get_code_repo_exposures",
+      "description": "Retrieves list of code repo exposures based on the parameters that you have specified.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "q",
+          "title": "Filter Query",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter code repo exposures by searching the given query on attribute field.",
+          "description": "(Optional) Filter code repo exposures by searching the given query on attribute field."
+        },
+        {
+          "name": "matched_domain",
+          "title": "Matched Domain",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by specific matched domain(s). Multiple matched domains should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific matched domain(s). Multiple matched domains should be comma separated and will work as OR filter.",
+          "placeholder": "eg: domain1.com,domain2.com"
+        },
+        {
+          "name": "risk_level",
+          "title": "Risk Level",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by specific risk level(s). Multiple risk levels should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific risk level(s). Multiple risk levels should be comma separated and will work as OR filter.",
+          "placeholder": "eg: LOW,MEDIUM,HIGH"
+        },
+        {
+          "name": "attribute_type",
+          "title": "Attribute Type",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by specific attribute type(s). Multiple attribute types should be comma separated and will work as OR filter",
+          "description": "(Optional) Filter by specific attribute type(s). Multiple attribute types should be comma separated and will work as OR filter",
+          "placeholder": "eg: Email,Password"
+        },
+        {
+          "name": "status",
+          "title": "Status",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter code repo exposures by status.",
+          "description": "(Optional) Filter code repo exposures by status.",
+          "options": [
+            "Active",
+            "Ignored",
+            "Resolved"
+          ]
+        },
+        {
+          "name": "start_date",
+          "title": "Start Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by profile added date. It is mandatory if end date is given.",
+          "description": "(Optional) Filter by profile added date. It is mandatory if end date is given."
+        },
+        {
+          "name": "end_date",
+          "title": "End Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by profile added date. Default is today's date.",
+          "description": "(Optional) Filter by profile added date. Default is today's date."
+        },
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Defaults to 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the records. Defaults to 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
+        }
+      ],
+      "output_schema": {
+        "hits": [
+          {
+            "added_ts": "",
+            "attribute": "",
+            "attribute_type": "",
+            "id": "",
+            "matched_domain": "",
+            "raw_info": "",
+            "risk_level": "",
+            "status": "",
+            "url": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
+    },
+    {
+      "operation": "get_domain_threats",
+      "title": "Get Domain Threats",
+      "annotation": "get_domain_threats",
+      "description": "Retrieves list of code domain threats based on the parameters that you have specified.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "q",
+          "title": "Filter Query",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter domain threats by searching the given query in domain, url, severity, original_domain, online_status, fuzzer fields.",
+          "description": "(Optional) Filter domain threats by searching the given query in domain, url, severity, original_domain, online_status, fuzzer fields."
+        },
+        {
+          "name": "original_domain",
+          "title": "Original Domain",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by specific original domain(s). Multiple matched domains should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific original domain(s). Multiple matched domains should be comma separated and will work as OR filter.",
+          "placeholder": "eg: domain1.com,domain2.com"
+        },
+        {
+          "name": "tags",
+          "title": "Tags",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by specific tag(s). Multiple tags should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific tag(s). Multiple tags should be comma separated and will work as OR filter.",
+          "placeholder": "eg: b7c4409f4e34eedc7a5447b077732c66,b7c4409f4e34eedc7a5447b077732c77"
+        },
+        {
+          "name": "online_status",
+          "title": "Online Status",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter domain threats by online status.",
+          "description": "(Optional) Filter domain threats by online status.",
+          "options": [
+            "Online",
+            "Not Available",
+            "Non Functional",
+            "Offline"
+          ]
+        },
+        {
+          "name": "status",
+          "title": "Status",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter domain threats by status.",
+          "description": "(Optional) Filter domain threats by status.",
+          "options": [
+            "Active",
+            "Ignored",
+            "Resolved"
+          ]
+        },
+        {
+          "name": "start_date",
+          "title": "Start Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by profile added date. It is mandatory if end date is given.",
+          "description": "(Optional) Filter by profile added date. It is mandatory if end date is given."
+        },
+        {
+          "name": "end_date",
+          "title": "End Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by profile added date. Default is today's date.",
+          "description": "(Optional) Filter by profile added date. Default is today's date."
+        },
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Defaults to 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the records. Defaults to 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
+        }
+      ],
+      "output_schema": {
+        "hits": [
+          {
+            "added_ts": "",
+            "domain": "",
+            "expiration_date": "",
+            "fuzzer": "",
+            "id": "",
+            "is_false_positive": "",
+            "is_impersonation": "",
+            "is_parked": "",
+            "online_status": "",
+            "original_domain": "",
+            "registration_date": "",
+            "severity": "",
+            "source": "",
+            "source_name": "",
+            "status": "",
+            "tags": []
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
+    },
+    {
+      "operation": "get_domain_threats_by_id",
+      "title": "Get Domain Threats By ID",
+      "annotation": "get_domain_threats_by_id",
+      "description": "Retrieves details of domain threat based on the ID that you have specified.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "id",
+          "title": "Domain Threat ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "tooltip": "Specify an ID of the domain threat to get its details.",
+          "description": "Specify an ID of the domain threat to get its details."
+        }
+      ],
+      "output_schema": {
+        "added_ts": "",
+        "domain": "",
+        "expiration_date": "",
+        "fuzzer": "",
+        "id": "",
+        "is_false_positive": "",
+        "is_impersonation": "",
+        "is_parked": "",
+        "online_status": "",
+        "original_domain": "",
+        "registration_date": "",
+        "severity": "",
+        "source": "",
+        "source_name": "",
+        "status": "",
+        "tags": [
+          {
+            "id": "",
+            "name": ""
+          }
+        ]
+      }
+    },
+    {
+      "operation": "get_executive_exposures",
+      "title": "Get Executive Exposures",
+      "annotation": "get_executive_exposures",
+      "description": "Retrieves list of executive exposures based on the parameters that you have specified.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "source_type",
+          "title": "Source Type",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter executive exposure by source type.",
+          "description": "(Optional) Filter executive exposure by source type."
+        },
+        {
+          "name": "executive_id",
+          "title": "Executive ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter executive exposure by executive ID.",
+          "description": "(Optional) Filter executive exposure by executive ID."
+        },
+        {
+          "name": "start_date",
+          "title": "Start Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by report added date. It is mandatory if end date is given.",
+          "description": "(Optional) Filter by report added date. It is mandatory if end date is given."
+        },
+        {
+          "name": "end_date",
+          "title": "End Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by profile report date. Default is today's date.",
+          "description": "(Optional) Filter by report added date. Default is today's date."
+        },
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Defaults to 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the records. Defaults to 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
+        }
+      ],
+      "output_schema": {
+        "hits": [
+          {
+            "added_ts": "",
+            "data": {},
+            "executive_id": "",
+            "id": "",
+            "matched_keywords": [
+              {
+                "type": "",
+                "value": ""
+              }
+            ],
+            "source_type": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
+    },
+    {
+      "operation": "get_executive_profiles",
+      "title": "Get Executive Profiles",
+      "annotation": "get_executive_profiles",
+      "description": "Retrieves list of executive profiles based on the parameters that you have specified.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "name",
+          "title": "Executive Name",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter executive profile by executive name.",
+          "description": "(Optional) Filter executive profile by executive name."
+        },
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Defaults to 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the records. Defaults to 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
+        }
+      ],
+      "output_schema": {
+        "hits": [
+          {
+            "id": "",
+            "name": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
+    },
+    {
+      "operation": "get_open_bucket_exposures",
+      "title": "Get Open Bucket Exposures",
+      "annotation": "get_open_bucket_exposures",
+      "description": "Retrieves list of open bucket exposures based on the parameters that you have specified.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "q",
+          "title": "Filter Query",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter open bucket exposures by searching the given query in bucket, file_name fields.",
+          "description": "(Optional) Filter open bucket exposures by searching the given query in bucket, file_name fields."
+        },
+        {
+          "name": "file_type",
+          "title": "File Type",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by specific file type(s). Multiple file types should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific file type(s). Multiple file types should be comma separated and will work as OR filter.",
+          "placeholder": "eg: gz,docx"
+        },
+        {
+          "name": "bucket_type",
+          "title": "Bucket Type",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by specific bucket type(s). Multiple bucket types should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific bucket type(s). Multiple bucket types should be comma separated and will work as OR filter.",
+          "placeholder": "eg: gcp,aws,azure"
+        },
+        {
+          "name": "status",
+          "title": "Status",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter open bucket exposures by status.",
+          "description": "(Optional) Filter open bucket exposures by status.",
+          "options": [
+            "Active",
+            "Ignored",
+            "Resolved"
+          ]
+        },
+        {
+          "name": "start_date",
+          "title": "Start Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by profile added date. It is mandatory if end date is given.",
+          "description": "(Optional) Filter by profile added date. It is mandatory if end date is given."
+        },
+        {
+          "name": "end_date",
+          "title": "End Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by profile added date. Default is today's date.",
+          "description": "(Optional) Filter by profile added date. Default is today's date."
+        },
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Defaults to 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the records. Defaults to 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
+        }
+      ],
+      "output_schema": {
+        "hits": [
+          {
+            "accessibility_status": "",
+            "added_ts": "",
+            "bucket": "",
+            "bucket_id": "",
+            "bucket_type": "",
+            "file_name": "",
+            "file_size": "",
+            "file_type": "",
+            "full_path": "",
+            "id": "",
+            "source_id": "",
+            "status": "",
+            "url": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
+    },
+    {
       "operation": "get_rogue_apps",
       "title": "Get Rogue Apps",
       "annotation": "get_rogue_apps",
       "description": "Retrieves a list of Rogue Apps based on the status and keywords that you have specified for the query; rogue apps are mobile applications trying to look like apps from trusted brands.",
       "category": "investigation",
-      "is_config_required": true,
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -71,7 +644,7 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "(Optional) Select the rogue app's status type from the following options to filter the results: Unofficial:Apps published by users that are not recognized officially, RogueApps: Apps published by known malicious actors or deemed to be potentially malicious.",
+          "description": "(Optional) Select the rogue app's status type from the following options to filter the results: Unofficial: Apps published by users that are not recognized officially, RogueApps: These are the unofficial apps deemed to be potentially malicious.",
           "tooltip": "Select the rogue app's status type from the following options to filter the results.",
           "options": [
             "Unofficial",
@@ -85,8 +658,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Specify the keywords to filter the results. For example: Source Name, Developer Name, App Name.",
-          "description": "(Optional) Specify the keywords to filter the results. For example: Source Name, Developer Name, App Name."
+          "tooltip": "Filter by specific keyword. Provided keyword will be searched in these fields: Keyword, Source Name, Developer Name, App Name.",
+          "description": "(Optional) Filter by specific keyword. Provided keyword will be searched in these fields: Keyword, Source Name, Developer Name, App Name."
         },
         {
           "name": "page",
@@ -95,6 +668,7 @@
           "editable": true,
           "visible": true,
           "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Default page is 1.",
           "description": "(Optional) Specify the page number from which to retrieve the records. Default page is 1."
         },
         {
@@ -104,7 +678,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "(Optional) Specify the count of records that the operation should include for the current page. Defaults to 10 and max up to 500 records per page."
+          "tooltip": "Specify the number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Specify the number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
         }
       ],
       "output_schema": {
@@ -164,12 +739,420 @@
       }
     },
     {
+      "operation": "get_social_media_threats",
+      "title": "Get Social Media Threats",
+      "annotation": "get_social_media_threats",
+      "description": "Retrieves list of social media threats based on the parameters that you have specified.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "q",
+          "title": "Filter Query",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter social media threats by searching the given query in profile_name, handle_name fields.",
+          "description": "(Optional) Filter social media threats by searching the given query in profile_name, handle_name fields."
+        },
+        {
+          "name": "media_type",
+          "title": "Media Type",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by specific media type(s). Multiple media types should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific media type(s). Multiple media types should be comma separated and will work as OR filter.",
+          "placeholder": "eg: FACEBOOK,INSTAGRAM,TWITTER"
+        },
+        {
+          "name": "profile_name",
+          "title": "Profile Name",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter social media threats by profile name.",
+          "description": "(Optional) Filter social media threats by profile name."
+        },
+        {
+          "name": "handle_name",
+          "title": "Handle Name",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter social media threats by handle name.",
+          "description": "(Optional) Filter social media threats by handle name."
+        },
+        {
+          "name": "is_verified",
+          "title": "Is Verified",
+          "type": "checkbox",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter all the verified social media threats.",
+          "description": "(Optional) Filter all the verified social media threats."
+        },
+        {
+          "name": "status",
+          "title": "Status",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter social media threats by status.",
+          "description": "(Optional) Filter social media threats by status.",
+          "options": [
+            "Active",
+            "False Positive",
+            "Takedown",
+            "Resolved"
+          ]
+        },
+        {
+          "name": "start_date",
+          "title": "Start Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by profile added date. It is mandatory if end date is given.",
+          "description": "(Optional) Filter by profile added date. It is mandatory if end date is given."
+        },
+        {
+          "name": "end_date",
+          "title": "End Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Filter by profile added date. Default is today's date.",
+          "description": "(Optional) Filter by profile added date. Default is today's date."
+        },
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Defaults to 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the records. Defaults to 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
+        }
+      ],
+      "output_schema": {
+        "hits": [
+          {
+            "added_ts": "",
+            "followers_count": "",
+            "friends_count": "",
+            "handle_name": "",
+            "id": "",
+            "is_verified": "",
+            "location": "",
+            "media_type": "",
+            "posts_count": "",
+            "profile_creation_ts": "",
+            "profile_name": "",
+            "profile_url": "",
+            "source_id": "",
+            "status": "",
+            "ticket_id": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
+    },
+    {
+      "operation": "get_code_repo_exposures_stats",
+      "title": "Get Code Repo Exposures Statistics",
+      "annotation": "get_code_repo_exposures_stats",
+      "description": "Retrieves the statistics of code repo exposures.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "count_by_action": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_attribute_type": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_risk_level": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "get_matched_domains_stats",
+      "title": "Get Matched Domains Statistics",
+      "annotation": "get_matched_domains_stats",
+      "description": "Retrieves the statistics of matched domains for the code repo exposures.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Defaults to 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the records. Defaults to 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
+        }
+      ],
+      "output_schema": {
+        "count_by_matched_domain": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "get_domain_threats_stats",
+      "title": "Get Domain Threats Statistics",
+      "annotation": "get_domain_threats_stats",
+      "description": "Retrieves the statistics of domain threats.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "count_by_action": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_domain_status": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_tags": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "get_original_domains_stats",
+      "title": "Get Original Domains Statistics",
+      "annotation": "get_original_domains_stats",
+      "description": "Retrieves the statistics of original domains threats.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Defaults to 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the records. Defaults to 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
+        }
+      ],
+      "output_schema": {
+        "count_by_original_domain": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "get_open_bucket_exposures_stats",
+      "title": "Get Open Bucket Exposures Statistics",
+      "annotation": "get_open_bucket_exposures_stats",
+      "description": "Retrieves the statistics of open bucket exposures.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "count_by_accessibility_status": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_bucket_type": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_file_type": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_status": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "get_social_media_threats_stats",
+      "title": "Get Social Media Threats Statistics",
+      "annotation": "get_social_media_threats_stats",
+      "description": "Retrieves the statistics of social media threats.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "count_by_is_verified": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_media_type": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_status": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "get_tags",
+      "title": "Get Tags",
+      "annotation": "get_tags",
+      "description": "Retrieves the list of active tags.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "hits": [
+          {
+            "id": "",
+            "name": ""
+          }
+        ]
+      }
+    },
+    {
       "operation": "get_takedown_requests",
       "title": "Get Takedown Requests",
       "annotation": "get_takedown_requests",
       "description": "Retrieves a list of takedown requests for rogue apps and typo domains for the given organization.",
       "category": "investigation",
-      "is_config_required": true,
       "visible": true,
       "enabled": true,
       "parameters": [
@@ -213,8 +1196,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip":"(Optional) Specify the keywords to filter the results. For example: ticketId, entity (It may be a domain name, the title of a report, Phished Domain, etc)",
-          "description": "(Optional) Specify the keywords to filter the results. For example: ticketId, entity (It may be a domain name, the title of a report, Phished Domain, etc)"
+          "tooltip": "Specify the keyword to filter the results. Provided keyword will be searched in these fields: ticketId, entity (it may be domain name, title of a report, Phished Domain, etc)",
+          "description": "(Optional) Specify the keyword to filter the results. Provided keyword will be searched in these fields: ticketId, entity (it may be domain name, title of a report, Phished Domain, etc)"
         },
         {
           "name": "start_date",
@@ -223,8 +1206,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Specify the start date of the range when the takedown was requested; default is last 6 months.",
-          "description": "(Optional) Specify the start date of the range when the takedown was requested; default is last 6 months."
+          "tooltip": "Specify the start date of the range when the takedown was requested. Default is last 6 months.",
+          "description": "(Optional) Specify the start date of the range when the takedown was requested. Default is last 6 months."
         },
         {
           "name": "end_date",
@@ -233,8 +1216,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Specify the end date of the range when the takedown was requested; default is today's date.",
-          "description": "(Optional) Specify the end date of the range when the takedown was requested; default is today's date."
+          "tooltip": "Specify the end date of the range when the takedown was requested. Default is today's date.",
+          "description": "(Optional) Specify the end date of the range when the takedown was requested. Default is today's date."
         },
         {
           "name": "page",
@@ -243,6 +1226,7 @@
           "editable": true,
           "visible": true,
           "required": false,
+          "tooltip": "Specify the page number from which to retrieve the records. Defaults to 1.",
           "description": "(Optional) Specify the page number from which to retrieve the records. Defaults to 1."
         },
         {
@@ -252,7 +1236,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "(Optional) Specify the count of records that the operation should include for the current page. Defaults to 10 and max up to 500 records per page."
+          "tooltip": "Specify the number of records to fetch per page. Defaults to 10 and max up to 500 records per page.",
+          "description": "(Optional) Specify the number of records to fetch per page. Defaults to 10 and max up to 500 records per page."
         }
       ],
       "output_schema": {

@@ -1,5 +1,5 @@
 """ Copyright start
-  Copyright (C) 2008 - 2021 Fortinet Inc.
+  Copyright (C) 2008 - 2023 Fortinet Inc.
   All rights reserved.
   FORTINET CONFIDENTIAL & FORTINET PROPRIETARY SOURCE CODE
   Copyright end """
@@ -21,15 +21,19 @@ class MakeRestApiCall:
         self.authkey = config.get("api_key", '')
         self.verify_ssl = config.get("verify_ssl", True)
 
-    def make_request(self, endpoint='', params=None, data=None, method='GET', headers=None, url=None, json_data=None):
+    def make_request(self, method='GET', endpoint='', params=None, data=None):
         try:
-            if url is None:
-                url = self.server_url + endpoint.format(org_id=self.org_id)
-
+            url = self.server_url + f"/bp/{self.org_id}" + endpoint
             headers = {"Content-Type": "application/json",
                        "Authorization": self.authkey}
+            logger.debug(f"\n-----------req_start-----------\n{method} - {url}\nparams: {params}\ndata: {data}\n")
+            try:
+                from connectors.debug_utils.curl_script import make_curl
+                make_curl(method, url, headers=headers, params=params, data=data, verify_ssl=self.verify_ssl)
+            except Exception as err:
+                logger.info(f"Error in curl utils: {str(err)}")
             response = requests.request(method=method, url=url,
-                                        headers=headers, data=data, json=json_data, params=params,
+                                        headers=headers, data=data, params=params,
                                         verify=self.verify_ssl)
 
             if response.ok:
@@ -51,129 +55,141 @@ class MakeRestApiCall:
             raise ConnectorError('{0}'.format(e))
 
 
-def _check_health(config: dict) -> bool:
+def build_params(params={}, multiselect=[]):
+    new_params = {}
+    for key, value in params.items():
+        if value is False or value == 0 or value:
+            if key in ("start_date", "end_date"):
+                value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d")
+            elif key in multiselect:
+                value = ",".join(value)
+            elif key in ("status", "online_status"):
+                value = value.upper().replace(" ", "_")
+            new_params[key] = value
+    return new_params
+
+
+def get_code_repo_exposures(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params)
+    return ob.make_request(method="GET", endpoint="/code_repo_exposures", params=new_params)
+
+
+def get_domain_threats(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params)
+    return ob.make_request(method="GET", endpoint="/domain_threats", params=new_params)
+
+
+def get_domain_threats_by_id(config, params):
+    ob = MakeRestApiCall(config)
+    _id = params.pop("id")
+    return ob.make_request(method="GET", endpoint=f"/domain_threats/{_id}")
+
+
+def get_executive_exposures(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params)
+    return ob.make_request(method="GET", endpoint="/executive_exposures", params=new_params)
+
+
+def get_executive_profiles(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params)
+    return ob.make_request(method="GET", endpoint="/executive_profiles", params=new_params)
+
+
+def get_open_bucket_exposures(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params)
+    return ob.make_request(method="GET", endpoint="/open_bucket_exposures", params=new_params)
+
+
+def get_rogue_apps(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params, multiselect=["status"])
+    return ob.make_request(method="GET", endpoint="/rogue_apps", params=new_params)
+
+
+def get_rogue_app_by_id(config, params):
+    ob = MakeRestApiCall(config)
+    _id = params.pop("id")
+    return ob.make_request(method="GET", endpoint=f"/rogue_apps/{_id}")
+
+
+def get_social_media_threats(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params)
+    return ob.make_request(method="GET", endpoint="/social_media_threats", params=new_params)
+
+
+def get_code_repo_exposures_stats(config, params):
+    ob = MakeRestApiCall(config)
+    return ob.make_request(method="GET", endpoint=f"/stats/code_repo_exposures")
+
+
+def get_matched_domains_stats(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params)
+    return ob.make_request(method="GET", endpoint="/stats/code_repo_exposures/matched_domains", params=new_params)
+
+
+def get_domain_threats_stats(config, params):
+    ob = MakeRestApiCall(config)
+    return ob.make_request(method="GET", endpoint=f"/stats/domain_threats")
+
+
+def get_original_domains_stats(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params)
+    return ob.make_request(method="GET", endpoint="/stats/domain_threats/original_domains", params=new_params)
+
+
+def get_open_bucket_exposures_stats(config, params):
+    ob = MakeRestApiCall(config)
+    return ob.make_request(method="GET", endpoint=f"/stats/open_bucket_exposures")
+
+
+def get_social_media_threats_stats(config, params):
+    ob = MakeRestApiCall(config)
+    return ob.make_request(method="GET", endpoint=f"/stats/social_media_threats")
+
+
+def get_tags(config, params):
+    ob = MakeRestApiCall(config)
+    return ob.make_request(method="GET", endpoint=f"/tags")
+
+
+def get_takedown_requests(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params, multiselect=["status", "category"])
+    return ob.make_request(method="GET", endpoint="/takedowns", params=new_params)
+
+
+def _check_health(config):
     try:
-        endpoint = "/orgs"
-        method = "GET"
-        MS = MakeRestApiCall(config=config)
-        MS.make_request(endpoint=endpoint, method=method)
+        get_code_repo_exposures_stats(config, {})
         return True
     except Exception as e:
-        raise Exception(e)
-
-
-def search_alerts(config: dict, params: dict) -> dict:
-    # deprecated action
-    MK = MakeRestApiCall(config=config)
-    endpoint = "/bp/{org_id}/alerts"
-    method = "GET"
-    if params.get("start_date"):
-        params["start_date"] = handle_date(params.get("start_date"))
-    if params.get("end_date"):
-        params["end_date"] = handle_date(params.get("end_date"))
-    multiselect = ["source_category", "report_type", "source_reliability", "information_reliability"]
-    payload = build_payload(params, multiselect)
-    response = MK.make_request(endpoint=endpoint, method=method, params=payload)
-    return response
-
-
-def get_alert_details_by_id(config: dict, params: dict) -> dict:
-    # deprecated action
-    MK = MakeRestApiCall(config=config)
-    alert_id = params.pop("id")
-    endpoint = "/bp/{org_id}/alerts/"+"{0}".format(alert_id)
-    method = "GET"
-    response = MK.make_request(endpoint=endpoint, method=method, params=params)
-    return response
-
-
-def get_phishing_campaigns(config: dict, params: dict) -> dict:
-    # deprecated action
-    MK = MakeRestApiCall(config=config)
-    endpoint = "/bp/{org_id}/phishing_campaigns"
-    method = "GET"
-    response = MK.make_request(endpoint=endpoint, method=method, params=params)
-    return response
-
-
-def get_phishing_campaigns_by_id(config: dict, params: dict) -> dict:
-    # deprecated action
-    MK = MakeRestApiCall(config=config)
-    endpoint = "/bp/{org_id}/phishing_campaigns"+"/{0}".format(params.pop("id"))
-    method = "GET"
-    response = MK.make_request(endpoint=endpoint, method=method, params=params)
-    return response
-
-
-def get_rogue_app_by_id(config: dict, params: dict) -> dict:
-    MK = MakeRestApiCall(config=config)
-    endpoint = "/bp/{org_id}/rogue_apps" + "/{0}".format(params.get("id"))
-    method = "GET"
-    response = MK.make_request(endpoint=endpoint, method=method, params={})
-    return response
-
-
-def get_rogue_apps(config: dict, params: dict) -> dict:
-    MK = MakeRestApiCall(config=config)
-    endpoint = "/bp/{org_id}/rogue_apps"
-    method = "GET"
-    payload = build_payload(params=params, multiselect=["status"])
-    response = MK.make_request(endpoint=endpoint, method=method, params=payload)
-    return response
-
-
-def get_takedown_requests(config: dict, params: dict) -> dict:
-    MK = MakeRestApiCall(config=config)
-    endpoint = "/bp/{org_id}/takedowns"
-    method = "GET"
-    if params.get("start_date"):
-        params["start_date"] = handle_date(params.get("start_date"))
-    if params.get("end_date"):
-        params["end_date"] = handle_date(params.get("end_date"))
-    multiselect = ["status", "category"]
-    payload = build_payload(params=params, multiselect=multiselect)
-    response = MK.make_request(endpoint=endpoint, method=method, params=payload)
-    return response
-
-
-def get_typo_domain_by_id(config: dict, params: dict) -> dict:
-    # deprecated action
-    MK = MakeRestApiCall(config=config)
-    endpoint = "/bp/{org_id}/typo_domains"+"/{0}".format(params.pop("id"))
-    method = "GET"
-    response = MK.make_request(endpoint=endpoint, method=method, params=params)
-    return response
-
-
-def get_typo_domains(config: dict, params: dict) -> dict:
-    # deprecated action
-    MK = MakeRestApiCall(config=config)
-    endpoint = "/bp/{org_id}/typo_domains"
-    method = "GET"
-    if params.get("start_date"):
-        params["start_date"] = handle_date(params.get("start_date"))
-    if params.get("end_date"):
-        params["end_date"] = handle_date(params.get("end_date"))
-    multiselect = ["status"]
-    payload = build_payload(params=params, multiselect=multiselect)
-    response = MK.make_request(endpoint=endpoint, method=method, params=payload)
-    return response
-
-
-def handle_date(str_date):
-    return datetime.strptime(str_date, "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d")
-
-
-def build_payload(params={}, multiselect=[]):
-    for k in multiselect:
-        v = params.get(k)
-        if v is not None:
-            params[k] = ",".join(v)
-    return params
+        raise Exception(str(e))
 
 
 operations = {
+    "get_code_repo_exposures": get_code_repo_exposures,
+    "get_domain_threats": get_domain_threats,
+    "get_domain_threats_by_id": get_domain_threats_by_id,
+    "get_executive_exposures": get_executive_exposures,
+    "get_executive_profiles": get_executive_profiles,
+    "get_open_bucket_exposures": get_open_bucket_exposures,
     "get_rogue_apps": get_rogue_apps,
+    "get_rogue_app_by_id": get_rogue_app_by_id,
+    "get_social_media_threats": get_social_media_threats,
+    "get_code_repo_exposures_stats": get_code_repo_exposures_stats,
+    "get_matched_domains_stats": get_matched_domains_stats,
+    "get_domain_threats_stats": get_domain_threats_stats,
+    "get_original_domains_stats": get_original_domains_stats,
+    "get_open_bucket_exposures_stats": get_open_bucket_exposures_stats,
+    "get_social_media_threats_stats": get_social_media_threats_stats,
+    "get_tags": get_tags,
     "get_takedown_requests": get_takedown_requests,
-    "get_rogue_app_by_id": get_rogue_app_by_id
 }
