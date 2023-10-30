@@ -1,0 +1,24 @@
+#### What's Fixed in 2.0.0
+- Added the following actions:
+  - Get Code Repo Exposures
+  - Get Domain Threats
+  - Get Domain Threats By ID
+  - Get Executive Exposures
+  - Get Executive Profiles
+  - Get Open Bucket Exposures
+  - Get Social Media Threats
+  - Get Code Repo Exposures Statistics
+  - Get Matched Domains Statistics
+  - Get Domain Threats Statistics
+  - Get Original Domains Statistics
+  - Get Open Bucket Exposures Statistics
+  - Get Social Media Threats Statistics
+  - Get Tags
+
+- Deprecated the following actions:
+  - Search Alerts
+  - Get Alert Details By Alert ID
+  - Get Phishing Campaigns
+  - Get Phishing Campaigns By ID
+  - Get Typo Domains
+  - Get Typo Domain By ID
