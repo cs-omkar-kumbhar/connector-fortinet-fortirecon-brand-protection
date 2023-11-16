@@ -791,7 +791,11 @@
         {
           "name": "is_verified",
           "title": "Is Verified",
-          "type": "checkbox",
+          "type": "select",
+          "options": [
+            "True",
+            "False"
+          ],
           "editable": true,
           "visible": true,
           "required": false,
