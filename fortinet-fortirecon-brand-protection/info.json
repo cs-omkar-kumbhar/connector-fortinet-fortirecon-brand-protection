@@ -65,13 +65,13 @@
       "parameters": [
         {
           "name": "q",
-          "title": "Filter Query",
+          "title": "Search By Keyword",
           "type": "text",
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter code repo exposures by searching the given query on attribute field.",
-          "description": "(Optional) Filter code repo exposures by searching the given query on attribute field."
+          "tooltip": "Filter code repo exposures by searching the specified keyword on attribute field.",
+          "description": "(Optional) Filter code repo exposures by searching the specified keyword on attribute field."
         },
         {
           "name": "matched_domain",
@@ -81,7 +81,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter by specific matched domain(s). Multiple matched domains should be comma separated and will work as OR filter.",
-          "description": "(Optional) Filter by specific matched domain(s). Multiple matched domains should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific matched domain(s). Multiple matched domains should be comma separated and will work as OR filter. eg: domain1.com,domain2.com",
           "placeholder": "eg: domain1.com,domain2.com"
         },
         {
@@ -92,7 +92,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter by specific risk level(s). Multiple risk levels should be comma separated and will work as OR filter.",
-          "description": "(Optional) Filter by specific risk level(s). Multiple risk levels should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific risk level(s). Multiple risk levels should be comma separated and will work as OR filter. eg: LOW,MEDIUM,HIGH",
           "placeholder": "eg: LOW,MEDIUM,HIGH"
         },
         {
@@ -102,8 +102,8 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter by specific attribute type(s). Multiple attribute types should be comma separated and will work as OR filter",
-          "description": "(Optional) Filter by specific attribute type(s). Multiple attribute types should be comma separated and will work as OR filter",
+          "tooltip": "Filter by specific attribute type(s). Multiple attribute types should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific attribute type(s). Multiple attribute types should be comma separated and will work as OR filter. eg: Email,Password",
           "placeholder": "eg: Email,Password"
         },
         {
@@ -114,7 +114,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter code repo exposures by status.",
-          "description": "(Optional) Filter code repo exposures by status.",
+          "description": "(Optional) Filter code repo exposures by status. You can select one of the following options: Active, Ignored, Resolved",
           "options": [
             "Active",
             "Ignored",
@@ -192,13 +192,13 @@
       "parameters": [
         {
           "name": "q",
-          "title": "Filter Query",
+          "title": "Search By Keyword",
           "type": "text",
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter domain threats by searching the given query in domain, url, severity, original_domain, online_status, fuzzer fields.",
-          "description": "(Optional) Filter domain threats by searching the given query in domain, url, severity, original_domain, online_status, fuzzer fields."
+          "tooltip": "Filter domain threats by searching the specified keyword in domain, url, severity, original_domain, online_status, fuzzer fields.",
+          "description": "(Optional) Filter domain threats by searching the specified keyword in domain, url, severity, original_domain, online_status, fuzzer fields."
         },
         {
           "name": "original_domain",
@@ -208,7 +208,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter by specific original domain(s). Multiple matched domains should be comma separated and will work as OR filter.",
-          "description": "(Optional) Filter by specific original domain(s). Multiple matched domains should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific original domain(s). Multiple matched domains should be comma separated and will work as OR filter. eg: domain1.com,domain2.com",
           "placeholder": "eg: domain1.com,domain2.com"
         },
         {
@@ -219,7 +219,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter by specific tag(s). Multiple tags should be comma separated and will work as OR filter.",
-          "description": "(Optional) Filter by specific tag(s). Multiple tags should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific tag(s). Multiple tags should be comma separated and will work as OR filter. eg: b7c4409f4e34eedc7a5447b077732c66,b7c4409f4e34eedc7a5447b077732c77",
           "placeholder": "eg: b7c4409f4e34eedc7a5447b077732c66,b7c4409f4e34eedc7a5447b077732c77"
         },
         {
@@ -230,7 +230,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter domain threats by online status.",
-          "description": "(Optional) Filter domain threats by online status.",
+          "description": "(Optional) Filter domain threats by online status. You can select one of the following options: Online, Not Available, Non Functional, Offline",
           "options": [
             "Online",
             "Not Available",
@@ -246,7 +246,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter domain threats by status.",
-          "description": "(Optional) Filter domain threats by status.",
+          "description": "(Optional) Filter domain threats by status. You can select one of the following options: Active, Ignored, Resolved",
           "options": [
             "Active",
             "Ignored",
@@ -519,13 +519,13 @@
       "parameters": [
         {
           "name": "q",
-          "title": "Filter Query",
+          "title": "Search By Keyword",
           "type": "text",
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter open bucket exposures by searching the given query in bucket, file_name fields.",
-          "description": "(Optional) Filter open bucket exposures by searching the given query in bucket, file_name fields."
+          "tooltip": "Filter open bucket exposures by searching the specified keyword in bucket, file_name fields.",
+          "description": "(Optional) Filter open bucket exposures by searching the specified keyword in bucket, file_name fields."
         },
         {
           "name": "file_type",
@@ -535,7 +535,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter by specific file type(s). Multiple file types should be comma separated and will work as OR filter.",
-          "description": "(Optional) Filter by specific file type(s). Multiple file types should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific file type(s). Multiple file types should be comma separated and will work as OR filter. eg: gz,docx",
           "placeholder": "eg: gz,docx"
         },
         {
@@ -546,7 +546,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter by specific bucket type(s). Multiple bucket types should be comma separated and will work as OR filter.",
-          "description": "(Optional) Filter by specific bucket type(s). Multiple bucket types should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific bucket type(s). Multiple bucket types should be comma separated and will work as OR filter. eg: gcp,aws,azure",
           "placeholder": "eg: gcp,aws,azure"
         },
         {
@@ -557,7 +557,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter open bucket exposures by status.",
-          "description": "(Optional) Filter open bucket exposures by status.",
+          "description": "(Optional) Filter open bucket exposures by status. You can select one of the following options: Active, Ignored, Resolved",
           "options": [
             "Active",
             "Ignored",
@@ -645,7 +645,7 @@
           "visible": true,
           "required": false,
           "description": "(Optional) Select the rogue app's status type from the following options to filter the results: Unofficial: Apps published by users that are not recognized officially, RogueApps: These are the unofficial apps deemed to be potentially malicious.",
-          "tooltip": "Select the rogue app's status type from the following options to filter the results.",
+          "tooltip": "Select the rogue app's status type from the following options to filter the results. You can select one of the following options: Unofficial, RogueApps",
           "options": [
             "Unofficial",
             "RogueApps"
@@ -653,7 +653,7 @@
         },
         {
           "name": "keyword",
-          "title": "Keyword",
+          "title": "Search By Keyword",
           "type": "text",
           "editable": true,
           "visible": true,
@@ -749,13 +749,13 @@
       "parameters": [
         {
           "name": "q",
-          "title": "Filter Query",
+          "title": "Search By Keyword",
           "type": "text",
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Filter social media threats by searching the given query in profile_name, handle_name fields.",
-          "description": "(Optional) Filter social media threats by searching the given query in profile_name, handle_name fields."
+          "tooltip": "Filter social media threats by searching the specified keyword in profile_name, handle_name fields.",
+          "description": "(Optional) Filter social media threats by searching the specified keyword in profile_name, handle_name fields."
         },
         {
           "name": "media_type",
@@ -765,7 +765,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter by specific media type(s). Multiple media types should be comma separated and will work as OR filter.",
-          "description": "(Optional) Filter by specific media type(s). Multiple media types should be comma separated and will work as OR filter.",
+          "description": "(Optional) Filter by specific media type(s). Multiple media types should be comma separated and will work as OR filter. eg: FACEBOOK,INSTAGRAM,TWITTER",
           "placeholder": "eg: FACEBOOK,INSTAGRAM,TWITTER"
         },
         {
@@ -800,7 +800,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter all the verified social media threats.",
-          "description": "(Optional) Filter all the verified social media threats."
+          "description": "(Optional) Filter all the verified social media threats. You can select one of the following options: True, False."
         },
         {
           "name": "status",
@@ -810,7 +810,7 @@
           "visible": true,
           "required": false,
           "tooltip": "Filter social media threats by status.",
-          "description": "(Optional) Filter social media threats by status.",
+          "description": "(Optional) Filter social media threats by status. You can select one of the following options: Active, False Positive, Takedown, Resolved.",
           "options": [
             "Active",
             "False Positive",
