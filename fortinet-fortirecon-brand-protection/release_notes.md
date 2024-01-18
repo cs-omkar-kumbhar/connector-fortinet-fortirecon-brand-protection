@@ -14,7 +14,8 @@
   - Get Open Bucket Exposures Statistics
   - Get Social Media Threats Statistics
   - Get Tags
-
+- Removed the drop-down option Official from the Get Rogue Apps action’s Status parameter.
+- Renamed the parameter Keyword to Search By Keyword in the Get Rogue Apps action.
 - Deprecated the following actions:
   - Search Alerts
   - Get Alert Details By Alert ID
