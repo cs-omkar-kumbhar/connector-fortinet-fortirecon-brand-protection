@@ -1,9 +1,10 @@
 {
   "name": "fortinet-fortirecon-brand-protection",
   "label": "Fortinet FortiRecon Brand Protection",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "FortiRecon is a Digital Risk Protection Service (DRPS) product that provides an outside-the-network view to the risks posed to your enterprise.",
   "publisher": "Fortinet",
+  "contributor": "Ramkrushna Pathade",
   "cs_approved": true,
   "cs_compatible": true,
   "category": "Attack Surface Management",
@@ -179,6 +180,230 @@
         "page": "",
         "size": "",
         "total": ""
+      }
+    },
+    {
+      "operation": "get_code_repos",
+      "title": "Get Code Repositories",
+      "annotation": "get_code_repos",
+      "description": "Retrieves a list of code repository based on the filter criteria that you have specified.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "q",
+          "title": "Search By Keyword",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify a keyword to search in code repositories and retrieve results containing the specified keyword.",
+          "description": "(Optional) Specify a keyword to search in code repositories and retrieve results containing the specified keyword."
+        },
+        {
+          "name": "matched_domain",
+          "title": "Matched Domain",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify a domain to search in code repositories and retrieve results containing the specified domain name. You can specify multiple comma-separated domains to retrieve code repositories containing the specified domains. For example: domain1.com,domain2.com.",
+          "description": "(Optional) Specify a domain to search in code repositories and retrieve results containing the specified domain name. You can specify multiple comma-separated domains to retrieve code repo exposures containing the specified domains. For example: domain1.com,domain2.com.",
+          "placeholder": "eg: domain1.com,domain2.com"
+        },
+        {
+          "name": "risk_level",
+          "title": "Risk Level",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify a risk level to search in code repositories and retrieve results containing the specified risk level. You can specify multiple comma-separated risk levels to retrieve code repositories containing the specified risk levels. For example, LOW,MEDIUM,HIGH.",
+          "description": "(Optional) Specify a risk level to search in code repositories and retrieve results containing the specified risk level. You can specify multiple comma-separated risk levels to retrieve code repositories containing the specified risk levels. For example, LOW,MEDIUM,HIGH.",
+          "placeholder": "eg: LOW,MEDIUM,HIGH"
+        },
+        {
+          "name": "attribute_type",
+          "title": "Attribute Type",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify an attribute type to search in code repositories and retrieve results containing the specified attribute type. You can specify multiple comma-separated attribute types to retrieve code repositories containing the specified attribute types. For example, Email,Password.",
+          "description": "(Optional) Specify an attribute type to search in code repositories and retrieve results containing the specified attribute type. You can specify multiple comma-separated attribute types to retrieve code repositories containing the specified attribute types. For example, Email,Password.",
+          "placeholder": "eg: Email,Password"
+        },
+        {
+          "name": "status",
+          "title": "Status",
+          "type": "select",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Select a status to search in code repositories and retrieve results containing the specified status. You can select from following options: Active Ignored Resolved",
+          "description": "(Optional) Select a status to search in code repositories and retrieve results containing the specified status. You can select from following options: Active Ignored Resolved",
+          "options": [
+            "Active",
+            "Ignored",
+            "Resolved"
+          ]
+        },
+        {
+          "name": "start_date",
+          "title": "Start Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Select the start date of the range containing the date when a profile was added. Selecting a start date is mandatory if an End Date is selected.",
+          "description": "(Optional) Select the start date of the range containing the date when a profile was added. Selecting a start date is mandatory if an End Date is selected."
+        },
+        {
+          "name": "end_date",
+          "title": "End Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Select the end date of the range containing the date when a profile was added. Default is the current date.",
+          "description": "(Optional) Select the end date of the range containing the date when a profile was added. Default is the current date."
+        },
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the results. Default value is 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the results. Default value is 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page.",
+          "description": "(Optional) Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page."
+        }
+      ],
+      "output_schema": {
+        "hits": [
+          {
+            "id": "",
+            "repo_url": "",
+            "files_count": "",
+            "risk_level": "",
+            "attribute": "",
+            "matched_domain": "",
+            "attribute_type": "",
+            "added_ts": "",
+            "status": ""
+          }
+        ],
+        "page": "",
+        "size": "",
+        "total": ""
+      }
+    },
+    {
+      "operation": "get_code_repos_stats",
+      "title": "Get Code Repos Statistics",
+      "annotation": "get_code_repos_stats",
+      "description": "Retrieves statistics for code repos.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [],
+      "output_schema": {
+        "count_by_action": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_attribute_type": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            },
+            {
+              "count": "",
+              "id": ""
+            },
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        },
+        "count_by_risk_level": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            },
+            {
+              "count": "",
+              "id": ""
+            },
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        }
+      }
+    },
+    {
+      "operation": "get_code_repo_matched_domains_stats",
+      "title": "Get Code Repo Matched Domains Statistics",
+      "annotation": "get_code_repo_matched_domains_stats",
+      "description": "Retrieves statistics of matched domains for the Code Repo exposures based on the page number and the page size specified.",
+      "category": "investigation",
+      "visible": true,
+      "enabled": true,
+      "parameters": [
+        {
+          "name": "page",
+          "title": "Page",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the page number from which to retrieve the results. Default value is 1.",
+          "description": "(Optional) Specify the page number from which to retrieve the results. Default value is 1."
+        },
+        {
+          "name": "size",
+          "title": "Size",
+          "type": "integer",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page.",
+          "description": "(Optional) Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page."
+        }
+      ],
+      "output_schema": {
+        "count_by_matched_domain": {
+          "aggregations": [
+            {
+              "count": "",
+              "id": ""
+            }
+          ],
+          "total": ""
+        }
       }
     },
     {
@@ -644,22 +869,57 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "description": "(Optional) Select the rogue app's status type from the following options to filter the results: Unofficial: Apps published by users that are not recognized officially, RogueApps: Apps published by known malicious actors or deemed to be potentially malicious.",
-          "tooltip": "Select the rogue app's status type from the following options to filter the results: Unofficial: Apps published by users that are not recognized officially, RogueApps: Apps published by known malicious actors or deemed to be potentially malicious.",
+          "description": "(Optional) Select the rogue apps status type from the following options to filter the results: Unofficial: These are the apps that are not necessarily rouge but mention your organization's brand, OFFICIAL: These are the apps that are officially published by your organization, ROGUE: These are the apps that are deemed to be impersonating your organization, TAKEDOWN: These are the rouge apps that are currently undergoing takedown by FortiRecon, ALSE_POSITIVE: These are the apps that were classified as either rouge or unofficial but are now deemed to be false positives by your organization's analysts, RESOLVED: These are the rouge apps that have been taken down.",
+          "tooltip": "Select the rogue apps status type from the following options to filter the results.",
           "options": [
-            "Unofficial",
-            "RogueApps"
+            "UNOFFICIAL",
+            "OFFICIAL",
+            "ROGUE",
+            "TAKEDOWN",
+            "FALSE_POSITIVE",
+            "RESOLVED"
           ]
         },
         {
-          "name": "keyword",
+          "name": "q",
           "title": "Search By Keyword",
           "type": "text",
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Specify the keywords to filter the results. For example: Source Name, Developer Name, App Name.",
-          "description": "(Optional) Specify the keywords to filter the results. For example: Source Name, Developer Name, App Name."
+          "tooltip": "Specify a keyword to search in rogue apps and retrieve results containing the specified keyword.",
+          "description": "(Optional) Specify a keyword to search in rogue apps and retrieve results containing the specified keyword."
+        },
+        {
+          "name": "appstore",
+          "title": "App Store Name",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify a app store to search in rogue apps and retrieve results containing the specified app stores. You can specify multiple comma-separated app stores to retrieve rogue apps containing the specified app stores. For example Androidapk,Applestore.",
+          "description": "(Optional) Specify a app store to search in rogue apps and retrieve results containing the specified app stores. You can specify multiple comma-separated file types to retrieve rogue apps containing the specified file types. For example Androidapk,Applestore.",
+          "placeholder": "eg: gz,docx"
+        },
+        {
+          "name": "start_date",
+          "title": "Start Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Select the start date of the range containing the date when a rogue app was first seen. Selecting a start date is mandatory if an End Date is selected.",
+          "description": "(Optional) Select the start date of the range containing the date when a rogue app was first seen. Selecting a start date is mandatory if an End Date is selected."
+        },
+        {
+          "name": "end_date",
+          "title": "End Date",
+          "type": "datetime",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Select the end date of the range containing the date when a rogue app was first seen. Default is the current date.",
+          "description": "(Optional) Select the end date of the range containing the date when a rogue app was first seen. Default is the current date."
         },
         {
           "name": "page",
@@ -685,17 +945,21 @@
       "output_schema": {
         "hits": [
           {
+            "added_ts": "",
+            "app_name": "",
+            "app_size": "",
+            "appstore": "",
+            "description": "",
             "developer_name": "",
             "download_count": "",
+            "download_url": "",
             "first_seen": "",
             "id": "",
-            "index_ts": "",
             "keyword": "",
-            "name": "",
-            "size": "",
-            "source_name": "",
+            "package_name": "",
             "status": "",
-            "ticket_id": ""
+            "ticket_id": "",
+            "updated_ts": ""
           }
         ],
         "page": "",
@@ -725,17 +989,29 @@
         }
       ],
       "output_schema": {
+        "app_name": "",
+        "app_size": "",
+        "appstore": "",
+        "created_ts": "",
+        "description": "",
         "developer_name": "",
+        "developer_url": "",
         "download_count": "",
+        "download_url": "",
         "first_seen": "",
         "id": "",
         "index_ts": "",
+        "is_whitelisted": "",
         "keyword": "",
-        "name": "",
-        "size": "",
-        "source_name": "",
+        "last_seen": "",
+        "listing_url": "",
+        "package_name": "",
+        "review_count": "",
+        "review_stars": "",
+        "screenshot_url": "",
         "status": "",
-        "ticket_id": ""
+        "ticket_id": "",
+        "updated_ts": ""
       }
     },
     {
@@ -882,87 +1158,6 @@
         "page": "",
         "size": "",
         "total": ""
-      }
-    },
-    {
-      "operation": "get_code_repo_exposures_stats",
-      "title": "Get Code Repo Exposures Statistics",
-      "annotation": "get_code_repo_exposures_stats",
-      "description": "Retrieves statistics for code repo exposures.",
-      "category": "investigation",
-      "visible": true,
-      "enabled": true,
-      "parameters": [],
-      "output_schema": {
-        "count_by_action": {
-          "aggregations": [
-            {
-              "count": "",
-              "id": ""
-            }
-          ],
-          "total": ""
-        },
-        "count_by_attribute_type": {
-          "aggregations": [
-            {
-              "count": "",
-              "id": ""
-            }
-          ],
-          "total": ""
-        },
-        "count_by_risk_level": {
-          "aggregations": [
-            {
-              "count": "",
-              "id": ""
-            }
-          ],
-          "total": ""
-        }
-      }
-    },
-    {
-      "operation": "get_matched_domains_stats",
-      "title": "Get Matched Domains Statistics",
-      "annotation": "get_matched_domains_stats",
-      "description": "Retrieves statistics of matched domains for the code repo exposures based on the page number and the page size specified.",
-      "category": "investigation",
-      "visible": true,
-      "enabled": true,
-      "parameters": [
-        {
-          "name": "page",
-          "title": "Page",
-          "type": "integer",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "tooltip": "Specify the page number from which to retrieve the results. Default value is 1.",
-          "description": "(Optional) Specify the page number from which to retrieve the results. Default value is 1."
-        },
-        {
-          "name": "size",
-          "title": "Size",
-          "type": "integer",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "tooltip": "Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page.",
-          "description": "(Optional) Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page."
-        }
-      ],
-      "output_schema": {
-        "count_by_matched_domain": {
-          "aggregations": [
-            {
-              "count": "",
-              "id": ""
-            }
-          ],
-          "total": ""
-        }
       }
     },
     {
@@ -1161,19 +1356,32 @@
       "enabled": true,
       "parameters": [
         {
+          "name": "q",
+          "title": "Search By Keyword",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": false,
+          "tooltip": "Specify a keyword to search in takedown requests and retrieve results containing the specified keyword.",
+          "description": "(Optional) Specify a keyword to search in takedown requests and retrieve results containing the specified keyword."
+        },
+        {
           "name": "status",
           "title": "Status",
           "type": "multiselect",
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Select a status to search in take-down requests and retrieve results containing the specified status. You can select from following options: Requested Acknowledged Initiated Closed",
-          "description": "(Optional) Select a status to search in take-down requests and retrieve results containing the specified status. You can select from following options: Requested Acknowledged Initiated Closed",
+          "tooltip": "Select a status to search in take-down requests and retrieve results containing the specified status. You can select from following options: REQUESTED, ACKNOWLEDGED, REJECTED, APPROVED, INITIATED, SUCCESSFULLY_CLOSED, UNSUCCESSFULLY_CLOSED.",
+          "description": "(Optional) Select a status to search in take-down requests and retrieve results containing the specified status. You can select from following options: REQUESTED, ACKNOWLEDGED, REJECTED, APPROVED, INITIATED, SUCCESSFULLY_CLOSED, UNSUCCESSFULLY_CLOSED.",
           "options": [
-            "Requested",
-            "Acknowledged",
-            "Initiated",
-            "Closed"
+            "REQUESTED",
+            "ACKNOWLEDGED",
+            "REJECTED",
+            "APPROVED",
+            "INITIATED",
+            "SUCCESSFULLY_CLOSED",
+            "UNSUCCESSFULLY_CLOSED"
           ]
         },
         {
@@ -1183,25 +1391,13 @@
           "editable": true,
           "visible": true,
           "required": false,
-          "tooltip": "Select a category to search in take-down requests and retrieve results containing the specified category. you can select from the following options: Phishing, Fraudulent Domains, Typosquatting, RogueApps, Alert.",
-          "description": "(Optional) Select a category to search in take-down requests and retrieve results containing the specified category. you can select from the following options: Phishing, Fraudulent Domains, Typosquatting, RogueApps, Alert.",
+          "tooltip": "Select a category to search in take-down requests and retrieve results containing the specified category. you can select from the following options: DomainThreat, RogueApps, SocialMediaThreat.",
+          "description": "(Optional) Select a category to search in take-down requests and retrieve results containing the specified category. you can select from the following options: DomainThreat, RogueApps, SocialMediaThreat.",
           "options": [
-            "Phishing",
-            "Fraudulentdomains",
-            "Typosquatting",
+            "DomainThreat",
             "RogueApps",
-            "Alert"
+            "SocialMediaThreat"
           ]
-        },
-        {
-          "name": "keyword",
-          "title": "Keyword",
-          "type": "text",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "tooltip": "Specify a keyword to search in take-down requests and retrieve results containing the specified keyword in ticket Id or entity fields. The entity field may contain domain name, title of a report, or Phished Domain.",
-          "description": "(Optional) Specify a keyword to search in take-down requests and retrieve results containing the specified keyword in ticket Id or entity fields. The entity field may contain domain name, title of a report, or Phished Domain."
         },
         {
           "name": "start_date",
@@ -1247,23 +1443,13 @@
       "output_schema": {
         "hits": [
           {
+            "added_ts": "",
             "category": "",
-            "comment": "",
-            "comment_at": "",
-            "comment_by": "",
-            "created_at": "",
             "entity": "",
-            "is_client": "",
-            "org_name": "",
-            "progress": "",
-            "requested_at": "",
-            "requested_by_user": "",
-            "requested_by_volon": "",
-            "sla": "",
+            "id": "",
+            "resource_id": "",
             "status": "",
-            "takedown_request_id": "",
-            "ticket_id": "",
-            "ttr": ""
+            "ticket_id": ""
           }
         ],
         "page": "",

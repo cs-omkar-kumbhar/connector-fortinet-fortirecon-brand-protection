@@ -71,10 +71,26 @@ def build_params(params={}, multiselect=[]):
     return new_params
 
 
+def get_code_repos(config, params):
+    ob = MakeRestApiCall(config)
+    new_params = build_params(params)
+    return ob.make_request(method="GET", endpoint="/code_repos", params=new_params)
+
+
 def get_code_repo_exposures(config, params):
     ob = MakeRestApiCall(config)
     new_params = build_params(params)
     return ob.make_request(method="GET", endpoint="/code_repo_exposures", params=new_params)
+
+
+def get_code_repos_stats(config, params):
+    ob = MakeRestApiCall(config)
+    return ob.make_request(method="GET", endpoint=f"/stats/code_repos")
+
+
+def get_code_repo_matched_domains_stats(config, params):
+    ob = MakeRestApiCall(config)
+    return ob.make_request(method="GET", endpoint="/stats/code_repos/matched_domains")
 
 
 def get_domain_threats(config, params):
@@ -109,7 +125,7 @@ def get_open_bucket_exposures(config, params):
 
 def get_rogue_apps(config, params):
     ob = MakeRestApiCall(config)
-    new_params = build_params(params, multiselect=["status"])
+    new_params = build_params(params)
     return ob.make_request(method="GET", endpoint="/rogue_apps", params=new_params)
 
 
@@ -123,17 +139,6 @@ def get_social_media_threats(config, params):
     ob = MakeRestApiCall(config)
     new_params = build_params(params)
     return ob.make_request(method="GET", endpoint="/social_media_threats", params=new_params)
-
-
-def get_code_repo_exposures_stats(config, params):
-    ob = MakeRestApiCall(config)
-    return ob.make_request(method="GET", endpoint=f"/stats/code_repo_exposures")
-
-
-def get_matched_domains_stats(config, params):
-    ob = MakeRestApiCall(config)
-    new_params = build_params(params)
-    return ob.make_request(method="GET", endpoint="/stats/code_repo_exposures/matched_domains", params=new_params)
 
 
 def get_domain_threats_stats(config, params):
@@ -164,20 +169,23 @@ def get_tags(config, params):
 
 def get_takedown_requests(config, params):
     ob = MakeRestApiCall(config)
-    new_params = build_params(params, multiselect=["status", "category"])
+    new_params = build_params(params)
     return ob.make_request(method="GET", endpoint="/takedowns", params=new_params)
 
 
 def _check_health(config):
     try:
-        get_code_repo_exposures_stats(config, {})
+        get_code_repos_stats(config, {})
         return True
     except Exception as e:
         raise Exception(str(e))
 
 
 operations = {
+    "get_code_repos": get_code_repos,
     "get_code_repo_exposures": get_code_repo_exposures,
+    "get_code_repos_stats": get_code_repos_stats,
+    "get_code_repo_matched_domains_stats": get_code_repo_matched_domains_stats,
     "get_domain_threats": get_domain_threats,
     "get_domain_threats_by_id": get_domain_threats_by_id,
     "get_executive_exposures": get_executive_exposures,
@@ -186,8 +194,6 @@ operations = {
     "get_rogue_apps": get_rogue_apps,
     "get_rogue_app_by_id": get_rogue_app_by_id,
     "get_social_media_threats": get_social_media_threats,
-    "get_code_repo_exposures_stats": get_code_repo_exposures_stats,
-    "get_matched_domains_stats": get_matched_domains_stats,
     "get_domain_threats_stats": get_domain_threats_stats,
     "get_original_domains_stats": get_original_domains_stats,
     "get_open_bucket_exposures_stats": get_open_bucket_exposures_stats,
