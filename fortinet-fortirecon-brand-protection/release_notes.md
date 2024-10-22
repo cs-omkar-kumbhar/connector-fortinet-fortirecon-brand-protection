@@ -1,15 +1,12 @@
 #### What's Fixed in 2.1.0
 - Added the following actions:
-  - Get Code Repos
+  - Get Code Repositories
   - Get Code Repos Statistics
   - Get Code Repos Matched Domains Statistics
-  - Get Rogue Apps
-  - Get Rogue App Details by ID
-  - Get Takedowns
 
-### What's remove
-- Deprecated following old actions:
-  - Get Takedowns
-  - Get Rogue Apps
-  - Get Rogue App Details by ID
-
+- In 'Get Rogue Apps' action updated the options for status and added the following   parameters: App Store Name, Start Date, End Date.
+- In 'Get Takedown Requests' action updated the options for status and renamed the 'Keyword' parameter to 'Search By Keyword'.
+- Updated the output schema for following actions: Get Rogue Apps, Get Rogue App By ID, Get  Takedown Requests.
+- Deprecated the following actions:
+  - Get Code Repo Exposures Statistics
+  - Get Matched Domains Statistics
