@@ -3,7 +3,6 @@
   - Get Code Repositories
   - Get Code Repos Statistics
   - Get Code Repos Matched Domains Statistics
-
 - In 'Get Rogue Apps' action updated the options for status and added the following   parameters: App Store Name, Start Date, End Date.
 - In 'Get Takedown Requests' action updated the options for status and renamed the 'Keyword' parameter to 'Search By Keyword'.
 - Updated the output schema for following actions: Get Rogue Apps, Get Rogue App By ID, Get  Takedown Requests.
