@@ -1,25 +1,12 @@
-#### What's Fixed in 2.0.0
+#### What's Fixed in 2.1.0
 - Added the following actions:
-  - Get Code Repo Exposures
-  - Get Domain Threats
-  - Get Domain Threats By ID
-  - Get Executive Exposures
-  - Get Executive Profiles
-  - Get Open Bucket Exposures
-  - Get Social Media Threats
+  - Get Code Repositories
+  - Get Code Repos Statistics
+  - Get Code Repos Matched Domains Statistics
+
+- In 'Get Rogue Apps' action updated the options for status and added the following   parameters: App Store Name, Start Date, End Date.
+- In 'Get Takedown Requests' action updated the options for status and renamed the 'Keyword' parameter to 'Search By Keyword'.
+- Updated the output schema for following actions: Get Rogue Apps, Get Rogue App By ID, Get  Takedown Requests.
+- Deprecated the following actions:
   - Get Code Repo Exposures Statistics
   - Get Matched Domains Statistics
-  - Get Domain Threats Statistics
-  - Get Original Domains Statistics
-  - Get Open Bucket Exposures Statistics
-  - Get Social Media Threats Statistics
-  - Get Tags
-- Removed the drop-down option Official from the Get Rogue Apps action’s Status parameter.
-- Renamed the parameter Keyword to Search By Keyword in the Get Rogue Apps action.
-- Deprecated the following actions:
-  - Search Alerts
-  - Get Alert Details By Alert ID
-  - Get Phishing Campaigns
-  - Get Phishing Campaigns By ID
-  - Get Typo Domains
-  - Get Typo Domain By ID
