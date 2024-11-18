@@ -174,7 +174,8 @@
             "raw_info": "",
             "risk_level": "",
             "status": "",
-            "url": ""
+            "url": "",
+            "repo_id": ""
           }
         ],
         "page": "",
@@ -373,26 +374,6 @@
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "page",
-          "title": "Page",
-          "type": "integer",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "tooltip": "Specify the page number from which to retrieve the results. Default value is 1.",
-          "description": "(Optional) Specify the page number from which to retrieve the results. Default value is 1."
-        },
-        {
-          "name": "size",
-          "title": "Size",
-          "type": "integer",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "tooltip": "Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page.",
-          "description": "(Optional) Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page."
-        }
       ],
       "output_schema": {
         "count_by_matched_domain": {
@@ -569,15 +550,14 @@
       "output_schema": {
         "added_ts": "",
         "domain": "",
-        "expiration_date": "",
-        "fuzzer": "",
         "id": "",
+        "notable_change_ts": "",
+        "ticket_id": "",
         "is_false_positive": "",
         "is_impersonation": "",
         "is_parked": "",
         "online_status": "",
         "original_domain": "",
-        "registration_date": "",
         "severity": "",
         "source": "",
         "source_name": "",
@@ -992,7 +972,6 @@
         "app_name": "",
         "app_size": "",
         "appstore": "",
-        "created_ts": "",
         "description": "",
         "developer_name": "",
         "developer_url": "",
@@ -1000,7 +979,6 @@
         "download_url": "",
         "first_seen": "",
         "id": "",
-        "index_ts": "",
         "is_whitelisted": "",
         "keyword": "",
         "last_seen": "",
@@ -1208,26 +1186,6 @@
       "visible": true,
       "enabled": true,
       "parameters": [
-        {
-          "name": "page",
-          "title": "Page",
-          "type": "integer",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "tooltip": "Specify the page number from which to retrieve the results. Default value is 1.",
-          "description": "(Optional) Specify the page number from which to retrieve the results. Default value is 1."
-        },
-        {
-          "name": "size",
-          "title": "Size",
-          "type": "integer",
-          "editable": true,
-          "visible": true,
-          "required": false,
-          "tooltip": "Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page.",
-          "description": "(Optional) Specify the number of records to fetch per page. Default value is 10 and you can specify a maximum value of 500 per page."
-        }
       ],
       "output_schema": {
         "count_by_original_domain": {
@@ -1456,6 +1414,211 @@
         "size": "",
         "total": ""
       }
+    },
+    {
+      "operation": "update_code_repo_status",
+      "title": "Update Code Repo Status",
+      "annotation": "update_code_repo_status",
+      "description": "Updates the status of the Code Repo record.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "output_schema": {
+        "message": ""
+      },
+      "parameters": [
+        {
+          "name": "repo_id",
+          "title": "Code Repo ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Specify the Code Repo ID to update the status.",
+          "tooltip": "Specify the Code Repo ID to update the status."
+        },
+        {
+          "title": "Status",
+          "name": "status",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the status to update the Code Repo.",
+          "description": "Specify the status to update the Code Repo. You can choose from ACTIVE, RESOLVED, IGNORED.",
+          "options": [
+            "ACTIVE",
+            "RESOLVED",
+            "IGNORED"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": "update_domain_threat_status",
+      "title": "Update Domain Threat Status",
+      "annotation": "update_domain_threat_status",
+      "description": "Updates the status of the Domain Threat record.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "output_schema": {
+        "message": ""
+      },
+      "parameters": [
+        {
+          "name": "domain_threat_id",
+          "title": "Domain Threat ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Specify the Domain Threat ID to update the status.",
+          "tooltip": "Specify the Domain Threat ID to update the status."
+        },
+        {
+          "title": "Status",
+          "name": "status",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the status to update the Domain Threat.",
+          "description": "Specify the status to update the Domain Threat. You can choose from ACTIVE, RESOLVED, FALSE_POSITIVE, TAKEDOWN, SAFELIST.",
+          "options": [
+            "ACTIVE",
+            "RESOLVED",
+            "FALSE_POSITIVE",
+            "TAKEDOWN",
+            "SAFELIST"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": "update_open_bucket_exposure_status",
+      "title": "Update Open Bucket Exposure Status",
+      "annotation": "update_open_bucket_exposure_status",
+      "description": "Updates the status of the Open Bucket Exposure record.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "output_schema": {
+        "message": ""
+      },
+      "parameters": [
+        {
+          "name": "open_bucket_exposure_id",
+          "title": "Open Bucket Exposure ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Specify the Open Bucket Exposure ID to update the status.",
+          "tooltip": "Specify the Open Bucket Exposure ID to update the status."
+        },
+        {
+          "title": "Status",
+          "name": "status",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the status to update the Open Bucket Exposure.",
+          "description": "Specify the status to update the Open Bucket Exposure. You can choose from ACTIVE, RESOLVED, IGNORED.",
+          "options": [
+            "ACTIVE",
+            "RESOLVED",
+            "IGNORED"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": "update_rogue_app_exposure_status",
+      "title": "Update Rogue App Status",
+      "annotation": "update_rogue_app_exposure_status",
+      "description": "Updates the status of the Rogue App record.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "output_schema": {
+        "message": ""
+      },
+      "parameters": [
+        {
+          "name": "rogue_app_exposure_id",
+          "title": "Rogue App ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Specify the Rogue App ID to update the status.",
+          "tooltip": "Specify the Rogue App ID to update the status."
+        },
+        {
+          "title": "Status",
+          "name": "status",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the status to update the Rogue App.",
+          "description": "Specify the status to update the Rogue App. You can choose from UNOFFICIAL, RESOLVED, FALSE_POSITIVE, OFFICIAL, ROGUE, TAKEDOWN.",
+          "options": [
+            "UNOFFICIAL",
+            "RESOLVED",
+            "FALSE_POSITIVE",
+            "OFFICIAL",
+            "ROGUE",
+            "TAKEDOWN"
+          ]
+        }
+      ]
+    },
+    {
+      "operation": "update_social_media_threat_status",
+      "title": "Update Social Media Threat Status",
+      "annotation": "update_social_media_threat_status",
+      "description": "Updates the status of the Social Media Threat record.",
+      "category": "investigation",
+      "is_config_required": true,
+      "visible": true,
+      "enabled": true,
+      "output_schema": {
+        "message": ""
+      },
+      "parameters": [
+        {
+          "name": "social_media_threat_id",
+          "title": "Social Media Threat ID",
+          "type": "text",
+          "editable": true,
+          "visible": true,
+          "required": true,
+          "description": "Specify the Social Media Threat ID to update the status.",
+          "tooltip": "Specify the Social Media Threat ID to update the status."
+        },
+        {
+          "title": "Status",
+          "name": "status",
+          "type": "select",
+          "visible": true,
+          "editable": true,
+          "required": true,
+          "tooltip": "Specify the status to update the Social Media Threat.",
+          "description": "Specify the status to update the Social Media Threat. You can choose from ACTIVE, FALSE_POSITIVE, TAKEDOWN.",
+          "options": [
+            "ACTIVE",
+            "FALSE_POSITIVE",
+            "TAKEDOWN"
+          ]
+        }
+      ]
     }
   ]
 }
