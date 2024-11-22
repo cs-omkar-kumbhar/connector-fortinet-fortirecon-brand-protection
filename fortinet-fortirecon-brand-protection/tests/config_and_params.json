@@ -1,0 +1,186 @@
+{
+    "config": [
+        {
+            "server_url": "server_url",
+            "api_key": "api_key",
+            "org_id": "org_id",
+            "verify_ssl": true
+        }
+    ],
+    "get_code_repo_exposures": [
+        {
+            "q": null,
+            "matched_domain": null,
+            "risk_level": null,
+            "attribute_type": null,
+            "status": "Active",
+            "start_date": "2024-11-15T13:21:37.065Z",
+            "end_date": "2024-11-15T13:21:37.065Z",
+            "page": null,
+            "size": null
+        }
+    ],
+    "get_code_repos": [
+        {
+            "q": null,
+            "matched_domain": null,
+            "risk_level": null,
+            "attribute_type": null,
+            "status": "Active",
+            "start_date": "2024-11-15T13:21:37.065Z",
+            "end_date": "2024-11-15T13:21:37.065Z",
+            "page": null,
+            "size": null
+        }
+    ],
+    "get_code_repos_stats": [
+        {}
+    ],
+    "get_code_repo_matched_domains_stats": [
+        {
+        }
+    ],
+    "get_domain_threats": [
+        {
+            "q": null,
+            "original_domain": null,
+            "tags": null,
+            "online_status": "Online",
+            "status": "Active",
+            "start_date": "2024-11-15T13:21:37.065Z",
+            "end_date": "2024-11-15T13:21:37.065Z",
+            "page": null,
+            "size": null
+        }
+    ],
+    "get_domain_threats_by_id": [
+        {
+            "id": "b3f1af93f7193bf8f4642a3388650679"
+        }
+    ],
+    "get_executive_exposures": [
+        {
+            "source_type": null,
+            "executive_id": null,
+            "start_date": "2024-11-15T13:21:37.065Z",
+            "end_date": "2024-11-15T13:21:37.065Z",
+            "page": null,
+            "size": null
+        }
+    ],
+    "get_executive_profiles": [
+        {
+            "name": null,
+            "page": null,
+            "size": null
+        }
+    ],
+    "get_open_bucket_exposures": [
+        {
+            "q": null,
+            "file_type": null,
+            "bucket_type": null,
+            "status": "Active",
+            "start_date": "2024-11-15T13:21:37.065Z",
+            "end_date": "2024-11-15T13:21:37.065Z",
+            "page": null,
+            "size": null
+        }
+    ],
+    "get_rogue_apps": [
+        {
+            "status": [
+                "ROGUE",
+                "OFFICIAL"
+            ],
+            "q": null,
+            "appstore": null,
+            "start_date": "2024-11-15T13:21:37.065Z",
+            "end_date": "2024-11-15T13:21:37.065Z",
+            "page": null,
+            "size": null
+        }
+    ],
+    "get_rogue_app_by_id": [
+        {
+            "id": "9522f9a8028f5c022e47d0752a48b0eb"
+        }
+    ],
+    "get_social_media_threats": [
+        {
+            "q": null,
+            "media_type": null,
+            "profile_name": null,
+            "handle_name": null,
+            "is_verified": "True",
+            "status": "Active",
+            "start_date": "2024-11-15T13:21:37.065Z",
+            "end_date": "2024-11-15T13:21:37.065Z",
+            "page": null,
+            "size": null
+        }
+    ],
+    "get_domain_threats_stats": [
+        {}
+    ],
+    "get_original_domains_stats": [
+        {
+        }
+    ],
+    "get_open_bucket_exposures_stats": [
+        {}
+    ],
+    "get_social_media_threats_stats": [
+        {}
+    ],
+    "get_tags": [
+        {}
+    ],
+    "get_takedown_requests": [
+        {
+            "q": null,
+            "status": [
+                "REQUESTED",
+                "ACKNOWLEDGED"
+            ],
+            "category": [
+                "DomainThreat",
+                "RogueApps"
+            ],
+            "start_date": "2024-11-15T13:21:37.065Z",
+            "end_date": "2024-11-15T13:21:37.065Z",
+            "page": null,
+            "size": null
+        }
+    ],
+    "update_code_repo_status": [
+        {
+            "repo_id": "1234",
+            "status": "ACTIVE"
+        }
+    ],
+    "update_domain_threat_status": [
+        {
+            "domain_threat_id": "1234",
+            "status": "ACTIVE"
+        }
+    ],
+    "update_open_bucket_exposure_status": [
+        {
+            "open_bucket_exposure_id": "1234",
+            "status": "ACTIVE"
+        }
+    ],
+    "update_rogue_app_exposure_status": [
+        {
+            "rogue_app_exposure_id": "1234",
+            "status": "UNOFFICIAL"
+        }
+    ],
+    "update_social_media_threat_status": [
+        {
+            "social_media_threat_id": "1234",
+            "status": "ACTIVE"
+        }
+    ]
+}

@@ -30,11 +30,11 @@ class MakeRestApiCall:
             logger.debug(f"\n-----------req_start-----------\n{method} - {url}\nparams: {params}\ndata: {data}\n")
             try:
                 from connectors.debug_utils.curl_script import make_curl
-                make_curl(method, url, headers=headers, params=params, data=data, verify_ssl=self.verify_ssl)
+                make_curl(method, url, headers=headers, params=params, json=data, verify_ssl=self.verify_ssl)
             except Exception as err:
                 logger.info(f"Error in curl utils: {str(err)}")
             response = requests.request(method=method, url=url,
-                                        headers=headers, data=data, params=params,
+                                        headers=headers, json=data, params=params,
                                         verify=self.verify_ssl)
 
             if response.ok:
@@ -64,7 +64,7 @@ def build_params(params={}, multiselect=[]):
                 value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%fZ").strftime("%Y-%m-%d")
             elif key in multiselect:
                 value = ",".join(value)
-            elif key in ("status", "online_status"):
+            elif key in ("status", "online_status") and isinstance(value, str):
                 value = value.upper().replace(" ", "_")
             new_params[key] = value
     return new_params
@@ -124,7 +124,7 @@ def get_open_bucket_exposures(config, params):
 
 def get_rogue_apps(config, params):
     ob = MakeRestApiCall(config)
-    new_params = build_params(params)
+    new_params = build_params(params, multiselect=["status"])
     return ob.make_request(method="GET", endpoint="/rogue_apps", params=new_params)
 
 
@@ -168,8 +168,53 @@ def get_tags(config, params):
 
 def get_takedown_requests(config, params):
     ob = MakeRestApiCall(config)
-    new_params = build_params(params)
+    new_params = build_params(params, multiselect=["status", "category"])
     return ob.make_request(method="GET", endpoint="/takedowns", params=new_params)
+
+# Update status
+def update_code_repo_status(config, params):
+    status = params.pop("status")
+    payload = {"status": status}
+    MK = MakeRestApiCall(config=config)
+    endpoint = "/code_repos/{0}".format(params.pop("repo_id"))
+    response = MK.make_request(endpoint=endpoint, method="PATCH", params=params, data=payload)
+    return response
+
+
+def update_domain_threat_status(config, params):
+    status = params.pop("status")
+    payload = {"status": status}
+    MK = MakeRestApiCall(config=config)
+    endpoint = "/domain_threats/{0}".format(params.pop("domain_threat_id"))
+    response = MK.make_request(endpoint=endpoint, method="PATCH", params=params, data=payload)
+    return response
+
+
+def update_open_bucket_exposure_status(config, params):
+    status = params.pop("status")
+    payload = {"status": status}
+    MK = MakeRestApiCall(config=config)
+    endpoint = "/open_bucket_exposures/{0}".format(params.pop("open_bucket_exposure_id"))
+    response = MK.make_request(endpoint=endpoint, method="PATCH", params=params, data=payload)
+    return response
+
+
+def update_rogue_app_exposure_status(config, params):
+    status = params.pop("status")
+    payload = {"status": status}
+    MK = MakeRestApiCall(config=config)
+    endpoint = "/rogue_apps/{0}".format(params.pop("rogue_app_exposure_id"))
+    response = MK.make_request(endpoint=endpoint, method="PATCH", params=params, data=payload)
+    return response
+
+
+def update_social_media_threat_status(config, params):
+    status = params.pop("status")
+    payload = {"status": status}
+    MK = MakeRestApiCall(config=config)
+    endpoint = "/social_media_threats/{0}".format(params.pop("social_media_threat_id"))
+    response = MK.make_request(endpoint=endpoint, method="PATCH", params=params, data=payload)
+    return response
 
 
 def _check_health(config):
@@ -199,4 +244,9 @@ operations = {
     "get_social_media_threats_stats": get_social_media_threats_stats,
     "get_tags": get_tags,
     "get_takedown_requests": get_takedown_requests,
+    "update_code_repo_status": update_code_repo_status,
+    "update_domain_threat_status": update_domain_threat_status,
+    "update_open_bucket_exposure_status": update_open_bucket_exposure_status,
+    "update_rogue_app_exposure_status": update_rogue_app_exposure_status,
+    "update_social_media_threat_status": update_social_media_threat_status
 }
