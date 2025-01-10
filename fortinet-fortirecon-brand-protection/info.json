@@ -10,7 +10,7 @@
   "category": "Attack Surface Management",
   "icon_small_name": "small_icon.png",
   "icon_large_name": "large_icon.png",
-  "help_online": "",
+  "help_online": "https://github.com/fortinet-fortisoar/connector-fortinet-fortirecon-brand-protection/blob/release/2.1.0/docs/FortinetFortiReconBrandProtectionConnectorDoc.md",
   "configuration": {
     "fields": [
       {
